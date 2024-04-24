@@ -121,10 +121,7 @@ int main(){
             break;
         char s = command[0];
         int n = command[1]-'0';
-        searchpyramid(pyramid, s, n);
-        
-        system("cls");
-        
+        searchpyramid(pyramid, s, n);    
         printmap(pyramid);
     }
 }
