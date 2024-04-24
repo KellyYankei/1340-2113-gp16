@@ -1,11 +1,11 @@
 # 1340-2113-gp16
-**This is Group 16 of the Course ENGG1340 && COMP2113**
+**This is Group 16 of the Course ENGG1340 && COMP2113 (2023-24, 2nd semester)**
 
 ## Contributors
 Li Wenbo UID: <br>
-Sun xueli UID: <br>
+Sun Xueli UID: <br>
 Tu Jingtian UID: <br>
-Wang Zixuan UID: <br>
+Wang Zixuan UID: 3036128705 <br>
 Zhen Qi UID:
 
 ## Description
@@ -18,7 +18,7 @@ Zhen Qi UID:
 
 ## Libraries
 * C++ libraries being used include: <br>
-iostream, fstream, sstream, filesystem, cstdlib, vector, string,algorithm
+iostream, fstream, sstream, filesystem, cstdlib, vector, string, algorithm
 
 * Additional library being used include: <br>
 ncurses-6.4 <br>
