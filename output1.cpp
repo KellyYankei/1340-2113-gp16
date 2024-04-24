@@ -27,25 +27,25 @@ void printspace(int i){
 
 void printcard_up(int status){
     if (status == 2)
-        cout << GREEN << "©°©¤©¤©¤©¤©´" << RESET;
+        cout << GREEN << "Â©Â°Â©Â¤Â©Â¤Â©Â¤Â©Â¤Â©Â´" << RESET;
     else
-        cout << "©°©¤©¤©¤©¤©´";
+        cout << "Â©Â°Â©Â¤Â©Â¤Â©Â¤Â©Â¤Â©Â´";
 }
 
 void printcard_mid(int status, char suit, int num){
     if (status == 2)
-        cout << GREEN << "©¦" << " " << suit << num << " " << "©¦" << RESET;
+        cout << GREEN << "Â©Â¦" << " " << suit << num << " " << "Â©Â¦" << RESET;
     else if (status == 1)
-        cout << "©¦" << " " << suit << num << " " << "©¦";
+        cout << "Â©Â¦" << " " << suit << num << " " << "Â©Â¦";
     else
-        cout << "©¦    ©¦";
+        cout << "Â©Â¦    Â©Â¦";
 }
 
 void printcard_bottom(int status){
     if (status == 2)
-        cout << GREEN << "©¸©¤©¤©¤©¤©¼" << RESET;
+        cout << GREEN << "Â©Â¸Â©Â¤Â©Â¤Â©Â¤Â©Â¤Â©Â¼" << RESET;
     else
-        cout << "©¸©¤©¤©¤©¤©¼";
+        cout << "Â©Â¸Â©Â¤Â©Â¤Â©Â¤Â©Â¤Â©Â¼";
 }
 
 void printmap(struct card map[]){
@@ -101,15 +101,16 @@ void searchpyramid(card pyramid[], char s, int n){
 
 void print_deck(int &pos1, card deck1[], int &oppo1)
 {
-	if(oppo1==0) cout<<"You have used up all the opportunities to flip the deck!"<<endl;
-	if(pos1>=1 && pos1<=13)
-	    printspace(2);
+    if(oppo1==0) cout<<"You have used up all the opportunities to flip the deck!"<<endl;
+    if(pos1>=1 && pos1<=13)
+    {
+        printspace(2);
         printcard_up(2);
         printcard_up(2);
         cout << endl;
         printspace(2);
-        printcard_mid(2, deck[pos1+22].suit, deck[pos1+22].num;
-        printcard_mid(2, deck[pos1+21].suit, deck[pos1+21].num;
+        printcard_mid(2, deck1[pos1+22].suit, deck1[pos1+22].num);
+        printcard_mid(2, deck1[pos1+21].suit, deck1[pos1+21].num);
         cout << endl;
         printspace(2);
         printcard_bottom(2);
@@ -117,22 +118,22 @@ void print_deck(int &pos1, card deck1[], int &oppo1)
     } 
     else if(pos1==0)
 	{
-		printspace(2);
+	printspace(2);
         printcard_up(2);
         cout << endl;
         printspace(2);
-        printcard_mid(2, deck[21].suit, deck[21].num);
+        printcard_mid(2, deck1[21].suit, deck1[21].num);
         cout << endl;
         printspace(2);
         printcard_bottom(2);  
 	}
 	else
 	{
-		printspace(3);
+	printspace(3);
         printcard_up(2);
         cout << endl;
         printspace(3);
-        printcard_mid(2, deck[35].suit, deck[35].num);
+        printcard_mid(2, deck1[35].suit, deck1[35].num);
         cout << endl;
         printspace(3);
         printcard_bottom(2);
