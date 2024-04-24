@@ -92,10 +92,32 @@ void searchpyramid(card pyramid[], char s, int n){
     }
 }
 
-void print_deck(int &pos1, card deck[], int &oppo1)//pos1 means the position of the left card
+void print_deck(int &pos1, card deck1[], int &oppo1)//pos1 means the position of the left card
 {
-    if(oppo1==0) cout<<"You have used up all the opportunities to flip the deck!"<<endl;
-    if(pos1>=1 && pos1<=14){
+    card deck[20];
+    int num=0;
+    for(int i=0;i<=14;i++)
+    {
+	    if(deck1[i].status!=0)
+	    {
+	        deck[num]=deck1[i];
+	        num++;
+	    } 
+    } 
+    
+    if(num==0)//num=15
+	{
+		cout<<"You have used up all the decks!"<<endl;
+		return;
+	}
+
+    if(oppo1==0)
+    {
+	    cout<<"You have used up all the opportunities to move the decks!"<<endl;
+	    return;
+    }
+    
+    if(pos1>=1 && pos1<num){
         printspace(2);
         printcard_up(2);
 	    printspace(3);
@@ -138,6 +160,5 @@ void print_deck(int &pos1, card deck[], int &oppo1)//pos1 means the position of 
     return;
 }
 
-}
 
 //status 0--removed 1--exist 2--can be moved
