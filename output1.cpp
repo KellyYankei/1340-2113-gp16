@@ -109,8 +109,8 @@ void print_deck(int &pos1, card deck[], int &oppo1)//pos1 means the position of 
         printcard_up(2);
         cout << endl;
         printspace(2);
-        printcard_mid(2, deck[pos1+21].suit, deck[pos1+21].num);
-        printcard_mid(2, deck[pos1+20].suit, deck[pos1+20].num);
+        printcard_mid(2, deck[pos1].suit, deck[pos1].num);
+        printcard_mid(2, deck[pos1-1].suit, deck[pos1-1].num);
         cout << endl;
         printspace(2);
         printcard_bottom(2);
@@ -122,7 +122,7 @@ void print_deck(int &pos1, card deck[], int &oppo1)//pos1 means the position of 
         printcard_up(2);
         cout << endl;
         printspace(2);
-        printcard_mid(2, deck[21].suit, deck[21].num);
+        printcard_mid(2, deck[0].suit, deck[0].num);
         cout << endl;
         printspace(2);
         printcard_bottom(2);  
@@ -133,7 +133,7 @@ void print_deck(int &pos1, card deck[], int &oppo1)//pos1 means the position of 
         printcard_up(2);
         cout << endl;
         printspace(3);
-        printcard_mid(2, deck[35].suit, deck[35].num);
+        printcard_mid(2, deck[14].suit, deck[14].num);
         cout << endl;
         printspace(3);
         printcard_bottom(2);
