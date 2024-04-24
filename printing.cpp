@@ -92,7 +92,7 @@ void searchpyramid(card pyramid[], char s, int n){
     }
 }
 
-void print_deck(int &pos1, card deck1[], int &oppo1)//pos1 means the position of the left card
+bool print_deck(int &pos1, card deck1[], int &oppo1)//pos1 means the position of the left card
 {
     card deck[20];
     int num=0;
@@ -108,13 +108,13 @@ void print_deck(int &pos1, card deck1[], int &oppo1)//pos1 means the position of
     if(num==0)//num=15
 	{
 		cout<<"You have used up all the decks!"<<endl;
-		return;
+		return 0;
 	}
 
     if(oppo1==0)
     {
 	    cout<<"You have used up all the opportunities to move the decks!"<<endl;
-	    return;
+	    return 0;
     }
     
     if(pos1>=1 && pos1<num){
@@ -156,8 +156,9 @@ void print_deck(int &pos1, card deck1[], int &oppo1)//pos1 means the position of
         printcard_bottom(2);
 	    cout << endl;
     }
-    
-    return;
+
+    if(num+1==pos) return 1;
+    return 0;
 }
 
 
