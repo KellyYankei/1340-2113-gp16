@@ -72,7 +72,7 @@ void shuffle(card deck[], int len){
     }
 }
 
-void Initialzing(card deck[]){
+void Initializing(card deck[]){
     card tmp;
     string suits = "SDHC";
     for (int i = 0; i < 4; i++){
