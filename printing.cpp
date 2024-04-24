@@ -61,11 +61,11 @@ void printmap(card map[]){
     }
 }
 
-void shuffle(card deck[], int len){
+void shuffle(card deck[]){
     card temp;
     int randomIndex = 0;
-    for (int i = 0; i < len; i++){
-        randomIndex = rand() % len;
+    for (int i = 0; i < 36; i++){
+        randomIndex = rand() % 36;
         temp = deck[i];
         deck[i] = deck[randomIndex];
         deck[randomIndex] = temp;
@@ -85,11 +85,13 @@ void Initializing(card deck[]){
     }
 }
 
-void searchpyramid(card pyramid[], char s, int n){
+int searchpyramid(card pyramid[], char s, int n){
     for (int i = 0; i < 21; i++){
-        if (pyramid[i].suit == s && pyramid[i].num == n)
-            pyramid[i].status = 2;
+        if (pyramid[i].suit == s && pyramid[i].num == n && pyramid[i].status == 2){
+			return i;
+		}   
     }
+	return -1
 }
 
 bool print_deck(int &pos1, card deck1[], int &oppo1)//pos1 means the position of the left card
