@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
@@ -138,28 +139,160 @@ int searchpyramid(card pyramid[], char s, int n){
     return -1;
 }
 
+int searchshow(card show[], char s, int n){
+    for (int i = 0; i < 21; i++){
+        if (show[i].suit == s && show[i].num == n){
+            return i; 
+        }
+    }
+    return -1;
+}
 
+int print_deck(int pos1, card deck1[], int oppo1, card show[2])   //pos1 means the position of the left card in the array "deck" defined below (not deck1)
+{//show means the present card displayed. The status will be 1 normally, and will be 0 if there is no card showed in the corresponding position.
+    card deck[20];    //use this array to record the remaining cards in the deck below  
+    int num=0;       //use this to count the number of remaining cards in the deck below
+	
+    for(int i=0;i<=14;i++)
+    {
+	    if(deck1[i].status!=0)
+	    {
+	        deck[num]=deck1[i];
+	        num++;
+	    } 
+    } 
+    
+    if(num==0)  
+	{
+		cout<<"You have used up all the decks!"<<endl;
+		show[0]=deck1[0];
+	        show[1]=deck1[0];
+	        show[0].status=0;
+	        show[1].status=0;
+		return 0;
+	}
 
-void print_deck(card deck[], int idx){
+    if(oppo1==0)
+    {
+	    cout<<RED << "You have used up all the opportunities to move the decks!"<< RESET <<endl;
+	    show[0]=deck1[0];
+	    show[1]=deck1[0];
+	    show[0].status=0;
+	    show[1].status=0;
+	    return 2;
+    }
+    
+    if(pos1>=1 && pos1<num){
+        printspace(2);
+        printcard_up(2);
+	    printspace(3);
+        printcard_up(2);
+        cout << endl;
+        printspace(2);
+        printcard_mid(2, deck[pos1].suit, deck[pos1].num);
+	    printspace(3);
+        printcard_mid(2, deck[pos1-1].suit, deck[pos1-1].num);
+        cout << endl;
+        printspace(2);
+        printcard_bottom(2);
+	    printspace(3);
+        printcard_bottom(2);  
+	    show[0]=deck[pos1];
+	    show[1]=deck[pos1-1];
+	    show[0].status=1;
+	    show[1].status=1;
+	    cout << endl;
+    } 
+    else if(pos1==0){   //if pos1==0,then only the first card in the deck need to be showed
+	    printspace(2);
+        printcard_up(2);
+        cout << endl;
+        printspace(2);
+        printcard_mid(2, deck[0].suit, deck[0].num);
+        cout << endl;
+        printspace(2);
+        printcard_bottom(2);
+	    show[0]=deck[pos1];
+	    show[1]=deck[pos1];
+	    show[0].status=1;
+	    show[1].status=0;
+	    cout << endl;
+    }
+    else{    //if pos1==num, then only the last card in the deck need to be showed
+	    printspace(-2);
+        printcard_up(2);
+        cout << endl;
+        printspace(-2);
+        printcard_mid(2, deck[num-1].suit, deck[num-1].num);
+        cout << endl;
+        printspace(-2);
+        printcard_bottom(2);
+	    show[0]=deck[num-1];
+	    show[1]=deck[num-1];
+	    show[0].status=0;
+	    show[1].status=1;
+	    cout << endl;
+    }
+
+    if(num==pos1) return 1; //This happens means the player have used up an opportunity to turn over the whole deck below. Special solution is needed outside.
+    return 0; 
 }
 
 int main(){
     cout << CLSCR;
-    card Cards[36], pyramid[21], deck[17];
+    card Cards[36], pyramid[21], deck[17], show[2];
+    int pos = 0, oppo = 1;
+
     Initialzing(Cards, pyramid, deck);
     set_status(pyramid);
     printmap(pyramid);
-    string c1;
+    print_deck(pos, deck, oppo, show);
+    
+    
+    string command, line;
+    vector<string> commands;
+    
 
+    
+    
     while (true){
-        cout << "Enter a command: ";
-        getline(cin, c1);
-        cout << CLSCR;
-        printmap(pyramid);
-        cout << RED << "You entered \"" << c1 << "\"" << RESET << endl;
+        cout << "Enter your command(\'f\'--flip; \'q\'--quit): ";
+        getline(cin,line);
+        istringstream iss(line);
+        while (iss >> command){
+            commands.push_back(command);
+        }
+        
+        if (commands.size() > 2){
+            cout << CLSCR;
+            printmap(pyramid);
+            print_deck(pos, deck, oppo, show);
+            cout << RED << "Invalid Input" << RESET << endl;
+        }
 
+        else if (commands.size() == 1){
+            if (commands[0] == "q"){
+                cout << CLSCR << RED << "Thank you for playing" << RESET;
+                break;
+                }
+
+            else if (commands[0] == "f"){
+                pos++;
+                cout << CLSCR;
+                printmap(pyramid);
+                if (print_deck(pos, deck, oppo, show) == 1){
+                   pos = -1; oppo--;
+                }   
+            }
+
+            else if (commands[0].size() == 2){
+                
+            }
+        }
+        
+
+        commands.clear();
     }
-
-
+    
     return 0;
 }
