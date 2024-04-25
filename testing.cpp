@@ -238,6 +238,7 @@ int print_deck(int pos1, card deck1[], int oppo1, card show[2])   //pos1 means t
     return 0; 
 }
 
+
 int main(){
     cout << CLSCR;
     card Cards[36], pyramid[21], deck[17], show[2];
@@ -274,6 +275,7 @@ int main(){
             if (commands[0] == "q"){
                 cout << CLSCR << RED << "Thank you for playing" << RESET;
                 break;
+		//skip to save/unsave/cancel
                 }
 
             else if (commands[0] == "f"){
@@ -282,11 +284,16 @@ int main(){
                 printmap(pyramid);
                 if (print_deck(pos, deck, oppo, show) == 1){
                    pos = -1; oppo--;
-                }   
+                }
+		    
             }
 
             else if (commands[0].size() == 2){
-                
+                if (checkFormat(commands[0]) && checkFormat(commands[1])){
+			
+		}
+		else cout << RED << "Invalid Input" << RESET << endl;
+		}
             }
         }
         
