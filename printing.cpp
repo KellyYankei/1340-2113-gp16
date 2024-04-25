@@ -159,7 +159,7 @@ bool print_deck(int &pos1, card deck1[], int &oppo1)//pos1 means the position of
 	    cout << endl;
     }
 
-    if(num+1==pos) return 1;
+    if(num==pos) return 1;
     return 0;
 }
 
