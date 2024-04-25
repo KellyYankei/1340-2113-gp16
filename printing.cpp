@@ -119,6 +119,10 @@ bool print_deck(int &pos1, card deck1[], int &oppo1, card show[2])   //pos1 mean
     if(num==0)  
 	{
 		cout<<"You have used up all the decks!"<<endl;
+		show[0]=deck1[0];
+	        show[1]=deck1[0];
+	        show[0].status=0;
+	        show[1].status=0;
 		return 0;
 	}
 
