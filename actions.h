@@ -8,5 +8,6 @@ using namespace std;
 
 bool checkFormat(string input);
 bool makeMatch(string card1, string card2, card pyramid[21], card deck[15], int& pos, card deck_movable[2]);
+void reset(card pyramid[21], card deck[15], int& pos);
 
 #endif

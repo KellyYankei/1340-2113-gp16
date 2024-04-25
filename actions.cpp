@@ -118,3 +118,16 @@ bool makeMatch(string card1, string card2, card pyramid[21], card deck[15], int&
 
 	return false;
 }
+
+//set the board to initial state (for restarting same game)
+void reset(card pyramid[21], card deck[15], int& pos) {
+	int i;
+
+	for (i = 0; i < 21; i++) 
+		pyramid[i].status = 1;
+	
+	for (i = 0; i < 15; i++)
+		deck[i].status = 1;
+
+	pos = 0;
+}
