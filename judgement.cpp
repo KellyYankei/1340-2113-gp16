@@ -3,6 +3,7 @@
 #include "structures.h"
 using namespace std;
 
+//set cards in pyramid to status 2 if they are removable
 void status(card pyramid[])
 {
 	if( (pyramid[0].status==1) && (pyramid[1].status==0) && (pyramid[2].status==0) ) pyramid[0].status=2; 

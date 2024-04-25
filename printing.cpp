@@ -14,6 +14,7 @@ using namespace std;
 #define RED     "\033[31m"
 #define GREEN   "\033[32m"
 
+//functions for formatting
 void printspace(int i){
     for (int k = 0; k < 5-i; k++)
         cout << "   ";
@@ -42,6 +43,7 @@ void printcard_bottom(int status){
         cout << "└────┘";
 }
 
+//function for printing the pyramid
 void printmap(card map[]){
     for (int i = 0; i < 6; i++){
         printspace(i);
@@ -62,6 +64,7 @@ void printmap(card map[]){
     }
 }
 
+//random generation of game set
 void Initialzing(card Cards[], card pyramid[], card deck[]){
     srand(time(NULL));
     card tmp;
@@ -94,6 +97,7 @@ void Initialzing(card Cards[], card pyramid[], card deck[]){
     }
 }
 
+//look for a certain card in the pyramid
 int searchpyramid(card pyramid[], char s, int n){
     for (int i = 0; i < 21; i++){
         if (pyramid[i].suit == s && pyramid[i].num == n && pyramid[i].status == 2){
