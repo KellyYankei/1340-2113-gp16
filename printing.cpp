@@ -5,6 +5,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include "printing.h"
 #include "structures.h"
 
 using namespace std;

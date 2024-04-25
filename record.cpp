@@ -6,6 +6,8 @@
 #include <filesystem>
 #include <vector>
 #include <cmath>
+#include "record.h"
+
 using namespace std;
 
 struct GameState {

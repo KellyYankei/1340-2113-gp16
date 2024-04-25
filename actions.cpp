@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "actions.h"
 #include "structures.h"
 
 using namespace std;

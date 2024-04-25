@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "saveload.h"
 #include "structures.h"
 
 using namespace std;
