@@ -102,10 +102,11 @@ int searchpyramid(card pyramid[], char s, int n){
 	return -1
 }
 
-bool print_deck(int &pos1, card deck1[], int &oppo1)   //pos1 means the position of the left card in the array "deck" defined below (not deck1)
+bool print_deck(int &pos1, card deck1[], int &oppo1, card show[2])   //pos1 means the position of the left card in the array "deck" defined below (not deck1)
 {
     card deck[20];    //use this array to record the remaining cards in the deck below  
     int num=0;       //use this to count the number of remaining cards in the deck below
+	
     for(int i=0;i<=14;i++)
     {
 	    if(deck1[i].status!=0)
@@ -124,6 +125,10 @@ bool print_deck(int &pos1, card deck1[], int &oppo1)   //pos1 means the position
     if(oppo1==0)
     {
 	    cout<<"You have used up all the opportunities to move the decks!"<<endl;
+	    show[0]=deck1[0];
+	    show[1]=deck1[0];
+	    show[0].status=0;
+	    show[1].status=0;
 	    return 0;
     }
     
@@ -142,6 +147,10 @@ bool print_deck(int &pos1, card deck1[], int &oppo1)   //pos1 means the position
         printcard_bottom(2);
 	    printspace(3);
         printcard_bottom(2);  
+	    show[0]=deck[pos1];
+	    show[1]=deck[pos1-1];
+	    show[0].status=1;
+	    show[1].status=1;
 	    cout << endl;
     } 
     else if(pos1==0){   //if pos1==0,then only the first card in the deck need to be showed
@@ -153,6 +162,10 @@ bool print_deck(int &pos1, card deck1[], int &oppo1)   //pos1 means the position
         cout << endl;
         printspace(2);
         printcard_bottom(2);
+	    show[0]=deck[pos1];
+	    show[1]=deck[pos1];
+	    show[0].status=1;
+	    show[1].status=0;
 	    cout << endl;
     }
     else{    //if pos1==num, then only the last card in the deck need to be showed
@@ -160,10 +173,14 @@ bool print_deck(int &pos1, card deck1[], int &oppo1)   //pos1 means the position
         printcard_up(2);
         cout << endl;
         printspace(-2);
-        printcard_mid(2, deck[14].suit, deck[14].num);
+        printcard_mid(2, deck[num-1].suit, deck[num-1].num);
         cout << endl;
         printspace(-2);
         printcard_bottom(2);
+	    show[0]=deck[num-1];
+	    show[1]=deck[num-1];
+	    show[0].status=0;
+	    show[1].status=1;
 	    cout << endl;
     }
 
