@@ -10,6 +10,7 @@
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
 #define GREEN   "\033[32m"
+#define CLSCR   "\033c"
 
 using namespace std;
 
@@ -143,21 +144,17 @@ void print_deck(card deck[], int idx){
 }
 
 int main(){
-    cout << "\033c";
+    cout << CLSCR;
     card Cards[36], pyramid[21], deck[17];
-    
     Initialzing(Cards, pyramid, deck);
-
     set_status(pyramid);
-
     printmap(pyramid);
-    
     string c1;
 
     while (true){
         cout << "Enter a command: ";
         getline(cin, c1);
-        cout << "\033c";
+        cout << CLSCR;
         printmap(pyramid);
         cout << RED << "You entered \"" << c1 << "\"" << RESET << endl;
 
