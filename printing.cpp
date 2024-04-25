@@ -61,18 +61,8 @@ void printmap(card map[]){
     }
 }
 
-void shuffle(card deck[]){
-    card temp;
-    int randomIndex = 0;
-    for (int i = 0; i < 36; i++){
-        randomIndex = rand() % 36;
-        temp = deck[i];
-        deck[i] = deck[randomIndex];
-        deck[randomIndex] = temp;
-    }
-}
-
-void Initializing(card deck[]){
+void Initialzing(card Cards[], card pyramid[], card deck[]){
+    srand(time(NULL));
     card tmp;
     string suits = "SDHC";
     for (int i = 0; i < 4; i++){
@@ -80,8 +70,26 @@ void Initializing(card deck[]){
             tmp.suit = suits[i];
             tmp.num = j + 1;
             tmp.status = 1;
-            deck[i*9 + j] = tmp;
+            Cards[i*9 + j] = tmp;
         }
+    }
+
+    card temp;
+    int randomIndex = 0;
+    for (int i = 0; i < 36; i++){
+        randomIndex = rand() % 36;
+        temp = Cards[i];
+        Cards[i] = Cards[randomIndex];
+        Cards[randomIndex] = temp;
+    }
+    
+    for (int i = 0; i < 21; i++){
+        pyramid[i] = Cards[i];
+    }
+
+    for (int i = 0; i < 15; i++){
+        deck[i] = Cards[i+21];
+        deck[i].status = 2;
     }
 }
 
