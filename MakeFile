@@ -1,0 +1,19 @@
+CXX = g++
+CXXFLAGS = -std=c++11
+
+TARGET = testing_ver_2
+
+$(TARGET): testing_ver_2.o actions.o structures.o
+	$(CXX) $(CXXFLAGS) -o $(TARGET) testing_ver_2.o actions.o structures.o
+
+testing_ver_2.o: testing_ver_2.cpp actions.h
+	$(CXX) $(CXXFLAGS) -c testing_ver_2.cpp
+
+actions.o: actions.cpp actions.h structures.h
+	$(CXX) $(CXXFLAGS) -c actions.cpp
+
+structures.o: structures.cpp structures.h
+	$(CXX) $(CXXFLAGS) -c structures.cpp
+
+clean:
+	rm -f $(TARGET) testing_ver_2.o actions.o structures.o		
