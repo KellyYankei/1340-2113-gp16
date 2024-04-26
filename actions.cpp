@@ -21,7 +21,7 @@ bool makeMatch(string card1, string card2, card pyramid[21], card deck[15], int&
 	//situation 1: one card with num 9
 	if (card2 == "") {
 		suit1 = card1[0];
-		num1 = card1[1];
+		num1 = card1[1] - '0';
 		if (num1 != 9)
 			return false;
 
@@ -51,8 +51,8 @@ bool makeMatch(string card1, string card2, card pyramid[21], card deck[15], int&
 	else {
 		suit1 = card1[0];
 		suit2 = card2[0];
-		num1 = card1[1];
-		num2 = card2[1];
+		num1 = card1[1] - '0';
+		num2 = card2[1] - '0';
 		if (num1 + num2 != 9)
 			return false;
 
@@ -67,7 +67,7 @@ bool makeMatch(string card1, string card2, card pyramid[21], card deck[15], int&
 				}
 
 				for (j = 0; j < 15; j++) {
-					if (deck[j].suit == suit2 && deck[j].num == num2 && deck[j].status == 1) {
+					if (deck[j].suit == suit2 && deck[j].num == num2 && deck[j].status == 2) {
 						if (deck[j] == deck_movable[0]) {
 							pyramid[i].status = 0;
 							deck[j].status = 0;
@@ -105,7 +105,7 @@ bool makeMatch(string card1, string card2, card pyramid[21], card deck[15], int&
 				}
 
 				for (j = 0; j < 15; j++) {
-					if (deck[j].suit == suit2 && deck[j].num == num2 && deck[j].status == 1) {
+					if (deck[j].suit == suit2 && deck[j].num == num2 && deck[j].status == 2) {
 						deck[i].status = 0;
 						deck[j].status = 0;
 						pos -= 1;
