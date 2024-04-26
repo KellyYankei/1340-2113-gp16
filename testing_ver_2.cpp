@@ -198,8 +198,8 @@ int print_deck(int pos1, card deck1[], int oppo1, card show[2])   //pos1 means t
         printcard_bottom(2);  
 	    show[0]=deck[pos1];
 	    show[1]=deck[pos1-1];
-	    show[0].status=1;
-	    show[1].status=1;
+	    show[0].status=2;
+	    show[1].status=2;
 	    cout << endl;
     } 
     else if(pos1==0){   //if pos1==0,then only the first card in the deck need to be showed
@@ -213,7 +213,7 @@ int print_deck(int pos1, card deck1[], int oppo1, card show[2])   //pos1 means t
         printcard_bottom(2);
 	    show[0]=deck[pos1];
 	    show[1]=deck[pos1];
-	    show[0].status=1;
+	    show[0].status=2;
 	    show[1].status=0;
 	    cout << endl;
     }
@@ -229,7 +229,7 @@ int print_deck(int pos1, card deck1[], int oppo1, card show[2])   //pos1 means t
 	    show[0]=deck[num-1];
 	    show[1]=deck[num-1];
 	    show[0].status=0;
-	    show[1].status=1;
+	    show[1].status=2;
 	    cout << endl;
     }
 
