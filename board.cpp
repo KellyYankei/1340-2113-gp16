@@ -1,7 +1,8 @@
-
 #include <stdio.h>
 #include <ncurses.h>
 #include <string>
+#include "board.h"
+using namespace std;
 
 #define WIDTH 50
 #define HEIGHT 8
@@ -14,26 +15,31 @@ int highlight = 1;
 char const *mode[] = { 
 			"New Game",
 			"Start from the old Games",
-			"Records",
+			"Play Records",
 			"Tutorial",
 			"Exit",
 		  };
 int n_choices = sizeof(mode) / sizeof(char *);
-void choose_mode();
+int choose_mode();
 void print_menu(WINDOW *win, int highlight);
 int ask_confirm(int highlight,int starty,int startx);
-void print_confirm(WINDOW * win,int confirm,int highlight);
+void print_confirm(WINDOW * win,int confirm_mode,int highlight);
 
-int main()    //the main funciton in this area, but still need to be changed
+int start() //this is for the starting meun
 {	
+	int confirm_mode;
 	while (choose){
-		choose_mode();
-		if(confirm==1)
+		confirm_mode = choose_mode();
+		if(confirm_mode==1)
 			choose = 0;
 	}
-	return 0;
+	refresh();
+	return highlight;
+	//highlight corresponds to the mode number;
 }
-void choose_mode(){
+
+
+int choose_mode(){ //this is for player to choose mode
 	WINDOW *win;
 	int choice = 0;
 	int c,ywin,xwin;
@@ -43,8 +49,8 @@ void choose_mode(){
 	noecho();
 	cbreak();	
 	getmaxyx(stdscr,ywin,xwin);
-	startx = (xwin - WIDTH) / 2;  //25
-	starty = (ywin - HEIGHT) / 2; //8
+	startx = (xwin - WIDTH) / 2;  
+	starty = (ywin - HEIGHT) / 2; 
 	win = newwin(HEIGHT, WIDTH, starty, startx); //define a window
 	keypad(win, TRUE); //allow users to use keyboard
 	attron(A_REVERSE);
@@ -81,17 +87,28 @@ void choose_mode(){
 			break;
 	}	
 	werase(win);
-	int confirm = ask_confirm(highlight,starty,startx);//1 is confirm,2 is not confirm
-	getch();
-	clrtoeol();
+	int confirm_mode = ask_confirm(highlight,starty,startx);//1 is confirm,2 is not confirm
 	refresh();
 	endwin();
+	return confirm_mode;
 }
-int ask_confirm(int highlight,int starty,int startx){
+void choose_record(){
+
+
+}
+void read_from_dir(){
+
+
+}
+
+/*this function asks confirmation after player chose mode,
+the inputs are their choice(represent by int highlight, and the windows'xy coordinate),output the confirm choice*/
+int ask_confirm(int highlight,int starty,int startx){ 
 	initscr();
 	WINDOW * ask = newwin(HEIGHT, WIDTH, starty, startx);
 	keypad(ask, TRUE);
 	box(ask,0,0);
+	confirm = 1;
 	int choice = 0;
 	int input;
 	print_confirm(ask,confirm,highlight);
@@ -125,6 +142,7 @@ int ask_confirm(int highlight,int starty,int startx){
 	return confirm;
 }
 
+/*this function print the window of the confirmation, inputs are window pointer, confirm and mode info,output the print*/
 void print_confirm(WINDOW * win,int confirm,int highlight){
 	int x, y, i;	
 	x = 2;
@@ -147,6 +165,7 @@ void print_confirm(WINDOW * win,int confirm,int highlight){
 
 }
 
+/*this funciton print the start meun, inputs are window pointer, the mode chosen, output the print*/
 void print_menu(WINDOW *menu_win, int highlight)
 {
 	int x, y, i;	
@@ -168,3 +187,4 @@ void print_menu(WINDOW *menu_win, int highlight)
 
 	wrefresh(menu_win);
 }
+
