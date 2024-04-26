@@ -3,17 +3,14 @@ CXXFLAGS = -std=c++11
 
 TARGET = testing_ver_2
 
-$(TARGET): testing_ver_2.o actions.o board.o structures.o
-	$(CXX) $(CXXFLAGS) -o $(TARGET) testing_ver_2.o actions.o structures.o -lncurses
+$(TARGET): testing_ver_2.o actions.o structures.o
+	$(CXX) $(CXXFLAGS) -o $(TARGET) testing_ver_2.o actions.o structures.o
 
-testing_ver_2.o: testing_ver_2.cpp actions.h board.h structures.h
-	$(CXX) $(CXXFLAGS) -c testing_ver_2.cpp -lncurses
+testing_ver_2.o: testing_ver_2.cpp actions.h structures.h
+	$(CXX) $(CXXFLAGS) -c testing_ver_2.cpp
 
 actions.o: actions.cpp actions.h structures.h
 	$(CXX) $(CXXFLAGS) -c actions.cpp
-
-board.o: board.cpp board.h
-	$(CXX) $(CXXFLAGS) -c board.cpp -lncurses
 
 structures.o: structures.cpp structures.h
 	$(CXX) $(CXXFLAGS) -c structures.cpp
