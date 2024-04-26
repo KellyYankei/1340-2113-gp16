@@ -6,7 +6,7 @@ TARGET = testing_ver_2
 $(TARGET): testing_ver_2.o actions.o structures.o
 	$(CXX) $(CXXFLAGS) -o $(TARGET) testing_ver_2.o actions.o structures.o
 
-testing_ver_2.o: testing_ver_2.cpp actions.h
+testing_ver_2.o: testing_ver_2.cpp actions.h structures.h
 	$(CXX) $(CXXFLAGS) -c testing_ver_2.cpp
 
 actions.o: actions.cpp actions.h structures.h
@@ -17,12 +17,3 @@ structures.o: structures.cpp structures.h
 
 clean:
 	rm -f $(TARGET) testing_ver_2.o actions.o structures.o		
-
-# Error msg: (base) Xuelis-MacBook-Air:project xuelisun$ make -f MakeFile
-#g++ -std=c++11 -o testing_ver_2 testing_ver_2.o actions.o structures.o
-#duplicate symbol 'operator==(card const&, card const&)' in:
-#    testing_ver_2.o
-#    actions.o
-#ld: 1 duplicate symbol for architecture arm64
-#clang: error: linker command failed with exit code 1 (use -v to see invocation)
-#make: *** [testing_ver_2] Error 1
