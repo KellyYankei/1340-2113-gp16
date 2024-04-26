@@ -33,7 +33,7 @@ bool makeMatch(string card1, string card2, card pyramid[21], card deck[15], int&
 		}
 
 		for (i = 0; i < 15; i++) {
-			if (deck[i].suit == suit1 && deck[i].num == 9 && deck[i].status == 1) {
+			if (deck[i].suit == suit1 && deck[i].num == 9 && deck[i].status == 2) {
 				if (deck[i] == deck_movable[0]) {
 					deck[i].status = 0;
 					return true;
@@ -86,7 +86,7 @@ bool makeMatch(string card1, string card2, card pyramid[21], card deck[15], int&
 		}
 
 		for (i = 0; i < 15; i++) {
-			if (deck[i].suit == suit1 && deck[i].num == num1 && deck[i].status == 1) {
+			if (deck[i].suit == suit1 && deck[i].num == num1 && deck[i].status == 2) {
 				for (j = 0; j < 21; j++) {
 					if (pyramid[j].suit == suit2 && pyramid[j].num == num2 && pyramid[j].status == 2) {
 						if (deck[i] == deck_movable[0]) {
