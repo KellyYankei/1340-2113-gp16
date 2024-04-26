@@ -8,6 +8,7 @@
 #include <ctime>
 #include <vector>
 #include "actions.h"
+#include "structures.h"
 
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
