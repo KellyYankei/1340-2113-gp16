@@ -310,7 +310,7 @@ int main() {
                     cout << CLSCR;
                     printmap(pyramid);
                     print_deck(pos, deck, oppo, show);
-                    cout << RED << "Invalid Input" << RESET << endl;
+                    cout << RED << "Chosen cards are not paired" << RESET << endl;
                 }
             }
         }
