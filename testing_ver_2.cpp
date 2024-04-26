@@ -7,11 +7,11 @@
 #include <cstdlib>
 #include <ctime>
 #include <vector>
-#include <stdio.h>
-#include <ncurses.h>
+//#include <stdio.h>
+//#include <ncurses.h>
 #include "actions.h"
 #include "structures.h"
-#include "board.h"
+//#include "board.h"
 
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
@@ -250,7 +250,7 @@ int main() {
     string command, line;
     vector<string> commands;
 
-    if (start()!=1){return 0;}; //if chosen mode is "start new game"
+    //if (start()!=1){return 0;}; //if chosen mode is "start new game"
 	
     while (true){
         cout << "Enter your command(\'f\'--flip; \'q\'--quit): ";
