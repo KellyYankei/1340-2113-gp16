@@ -11,6 +11,8 @@ int startx = 0;
 int starty = 0;
 int choose =1;
 int confirm =1;
+int record = 1;
+int quit = 1;
 int highlight = 1;
 char const *mode[] = { 
 			"New Game",
@@ -22,8 +24,12 @@ char const *mode[] = {
 int n_choices = sizeof(mode) / sizeof(char *);
 int choose_mode();
 void print_menu(WINDOW *win, int highlight);
-int ask_confirm(int highlight,int starty,int startx);
-void print_confirm(WINDOW * win,int confirm_mode,int highlight);
+int ask_confirm(int highlight);
+void print_confirm(WINDOW * win,int confirm1,int highlight);
+void ask_if_exit();
+void choose_record();
+void print_record(WINDOW * win,int confirm1,int highlight);
+void print_quit(WINDOW * win,int confirm1, int highlight);
 
 int start() //this is for the starting meun
 {	
@@ -34,11 +40,27 @@ int start() //this is for the starting meun
 			choose = 0;
 	}
 	refresh();
-	return highlight;
-	//highlight corresponds to the mode number;
+
+	switch(highlight)  //highlight corresponds to the mode number;
+		{	case 1: //new game
+				endwin();
+				return 1;
+			case 2: // start from old game
+				endwin();
+				return 2;
+			case 3: // play records
+				choose_record();
+				return 3;  // I think we can just show the deck but it cannot be operated, and player can choose to go back to meun
+			case 4: //tutorial
+				endwin();
+				return 4;
+			default: //exit
+				ask_if_exit();
+				endwin();
+				return 0;
+		}
+	
 }
-
-
 int choose_mode(){ //this is for player to choose mode
 	WINDOW *win;
 	int choice = 0;
@@ -87,13 +109,49 @@ int choose_mode(){ //this is for player to choose mode
 			break;
 	}	
 	werase(win);
-	int confirm_mode = ask_confirm(highlight,starty,startx);//1 is confirm,2 is not confirm
+	int confirm_mode = ask_confirm(highlight);//1 is confirm,2 is not confirm
 	refresh();
 	endwin();
 	return confirm_mode;
 }
-void choose_record(){
 
+void choose_record(){
+	initscr();
+	WINDOW * ask = newwin(HEIGHT, WIDTH, starty, startx);
+	keypad(ask, TRUE);
+	box(ask,0,0);
+	int choice = 0;
+	int input;
+	print_record(ask,record,highlight);
+	while(1)
+	{	input = wgetch(ask);
+		switch(input)
+		{	case KEY_UP:
+				if(record==1)
+					record = 2;
+				else
+					record = 1;
+				break;
+			case KEY_DOWN:
+				if(record==1)
+					record = 2;
+				else
+					record = 1;
+				break;
+			case 10:
+				choice = 1;
+				break;
+			default:
+				refresh();
+				break;
+		}
+		wrefresh(ask);
+		print_record(ask,record,highlight);
+		if(choice == 1)	
+			break;
+	}	
+	endwin();
+	return record;
 
 }
 void read_from_dir(){
@@ -101,9 +159,47 @@ void read_from_dir(){
 
 }
 
+void ask_if_exit(){
+	initscr();
+	WINDOW * ask = newwin(HEIGHT, WIDTH, starty, startx);
+	keypad(ask, TRUE);
+	box(ask,0,0);
+	int choice = 0;
+	int input;
+	print_quit(ask,quit,highlight);
+	while(1)
+	{	input = wgetch(ask);
+		switch(input)
+		{	case KEY_UP:
+				if(quit==1)
+					quit = 2;
+				else
+					quit = 1;
+				break;
+			case KEY_DOWN:
+				if(quit==1)
+					quit = 2;
+				else
+					quit = 1;
+				break;
+			case 10:
+				choice = 1;
+				break;
+			default:
+				refresh();
+				break;
+		}
+		wrefresh(ask);
+		print_quit(ask,quit,highlight);
+		if(choice == 1)	
+			break;
+	}	
+	return quit;
+}
+
 /*this function asks confirmation after player chose mode,
-the inputs are their choice(represent by int highlight, and the windows'xy coordinate),output the confirm choice*/
-int ask_confirm(int highlight,int starty,int startx){ 
+the inputs is player's choice,output the confirm choice*/
+int ask_confirm(int highlight){ 
 	initscr();
 	WINDOW * ask = newwin(HEIGHT, WIDTH, starty, startx);
 	keypad(ask, TRUE);
@@ -143,7 +239,7 @@ int ask_confirm(int highlight,int starty,int startx){
 }
 
 /*this function print the window of the confirmation, inputs are window pointer, confirm and mode info,output the print*/
-void print_confirm(WINDOW * win,int confirm,int highlight){
+void print_confirm(WINDOW * win,int confirm1,int highlight){
 	int x, y, i;	
 	x = 2;
 	y = 2;
@@ -151,13 +247,34 @@ void print_confirm(WINDOW * win,int confirm,int highlight){
 	mvwprintw(win,y-1,x,"Are you sure you want to choose \"%s\" ?",mode[highlight-1]);
 	box(win, 0, 0);
 	for(i = 0; i < 2; ++i)
-	{	if(confirm == i+1) /* High light the present choice */
+	{	if(confirm1 == i+1) /* High light the present choice */
 		{	wattron(win, A_REVERSE); 
 			mvwprintw(win, y+2, x, "%s", yesorno[i]);
 			wattroff(win, A_REVERSE);
 		}
 		else
 			mvwprintw(win, y+2, x, "%s", yesorno[i]);
+		y+=2;
+	}
+
+	wrefresh(win);
+
+}
+void print_record(WINDOW * win,int confirm1,int highlight){
+	int x, y, i;	
+	x = 2;
+	y = 2;
+	char const*record[] = {"save 1","save 2"};
+	mvwprintw(win,y-1,x,"Which old games you want to continue?");
+	box(win, 0, 0);
+	for(i = 0; i < 2; ++i)
+	{	if(confirm1 == i+1) /* High light the present choice */
+		{	wattron(win, A_REVERSE); 
+			mvwprintw(win, y+2, x, "%s", record[i]);
+			wattroff(win, A_REVERSE);
+		}
+		else
+			mvwprintw(win, y+2, x, "%s", record[i]);
 		y+=2;
 	}
 
@@ -188,3 +305,24 @@ void print_menu(WINDOW *menu_win, int highlight)
 	wrefresh(menu_win);
 }
 
+void print_quit(WINDOW * win,int confirm1, int highlight){
+	int x, y, i;	
+	x = 2;
+	y = 2;
+	char const*quit[] = {"YES","NO"};
+	mvwprintw(win,y-1,x,"Are you sure you want to quit the game?");
+	box(win, 0, 0);
+	for(i = 0; i < 2; ++i)
+	{	if(confirm1 == i+1) /* High light the present choice */
+		{	wattron(win, A_REVERSE); 
+			mvwprintw(win, y+2, x, "%s", quit[i]);
+			wattroff(win, A_REVERSE);
+		}
+		else
+			mvwprintw(win, y+2, x, "%s", quit[i]);
+		y+=2;
+	}
+
+	wrefresh(win);
+
+}
