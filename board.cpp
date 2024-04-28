@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <ncurses.h>
 #include <string>
@@ -34,32 +35,39 @@ void print_quit(WINDOW * win,int confirm1, int highlight);
 int start() //this is for the starting meun
 {	
 	int confirm_mode;
-	while (choose){
-		confirm_mode = choose_mode();
-		if(confirm_mode==1)
-			choose = 0;
-	}
-	refresh();
-
-	switch(highlight)  //highlight corresponds to the mode number;
-		{	case 1: //new game
-				endwin();
-				return 1;
-			case 2: // start from old game
-				endwin();
-				return 2;
-			case 3: // play records
-				choose_record();
-				return 3;  // I think we can just show the deck but it cannot be operated, and player can choose to go back to meun
-			case 4: //tutorial
-				endwin();
-				return 4;
-			default: //exit
-				ask_if_exit();
-				endwin();
-				return 0;
+	while(1){
+		while (choose){
+			confirm_mode = choose_mode();
+			if(confirm_mode==1)
+				choose = 0;
 		}
-	
+		refresh();
+		if(highlight==5){
+					if (ask_if_exit()==1){
+						endwin();
+						return 0;
+					}
+					else{
+						endwin();
+						choose = 1;
+						continue;
+						}
+		}
+		switch(highlight)  //highlight corresponds to the mode number;
+			{	case 1: //new game
+					endwin();
+					return 1;
+				case 2: // start from old game
+					endwin();
+					return 2;
+				case 3: // play records
+					choose_record();
+					return 3;  // I think we can just show the deck but it cannot be operated, and player can choose to go back to meun
+				case 4: //tutorial
+					endwin();
+					return 4;
+			}
+	}
 }
 int choose_mode(){ //this is for player to choose mode
 	WINDOW *win;
@@ -107,12 +115,17 @@ int choose_mode(){ //this is for player to choose mode
 		print_menu(win, highlight);
 		if(choice != 0)	
 			break;
-	}	
-	werase(win);
-	int confirm_mode = ask_confirm(highlight);//1 is confirm,2 is not confirm
-	refresh();
-	endwin();
-	return confirm_mode;
+		}	
+		werase(win);
+		if(highlight==5){
+			refresh();
+			endwin();
+			return 1;
+			}//if choose exit, jump to confirm quit
+		int confirm_mode = ask_confirm(highlight);//1 is confirm,2 is not confirm
+		refresh();
+		endwin();
+		return confirm_mode;
 }
 
 int choose_record(){
