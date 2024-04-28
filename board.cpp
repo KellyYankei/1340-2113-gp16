@@ -26,8 +26,8 @@ int choose_mode();
 void print_menu(WINDOW *win, int highlight);
 int ask_confirm(int highlight);
 void print_confirm(WINDOW * win,int confirm1,int highlight);
-void ask_if_exit();
-void choose_record();
+int ask_if_exit();
+int choose_record();
 void print_record(WINDOW * win,int confirm1,int highlight);
 void print_quit(WINDOW * win,int confirm1, int highlight);
 
@@ -115,7 +115,7 @@ int choose_mode(){ //this is for player to choose mode
 	return confirm_mode;
 }
 
-void choose_record(){
+int choose_record(){
 	initscr();
 	WINDOW * ask = newwin(HEIGHT, WIDTH, starty, startx);
 	keypad(ask, TRUE);
@@ -159,7 +159,7 @@ void read_from_dir(){
 
 }
 
-void ask_if_exit(){
+int ask_if_exit(){
 	initscr();
 	WINDOW * ask = newwin(HEIGHT, WIDTH, starty, startx);
 	keypad(ask, TRUE);
