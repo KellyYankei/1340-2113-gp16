@@ -1,3 +1,5 @@
+#include "structures.h"
+
 struct card {
 	char suit;
 	int num;

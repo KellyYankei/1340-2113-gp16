@@ -3,6 +3,7 @@
 #include "saveload.h"
 #include "actions.h"
 #include "structures.h"
+#include "reverse.h"
 using namespace std;
 
 bool deleteLastStep(vector<action> record, card pyramid[21], card deck[15]){

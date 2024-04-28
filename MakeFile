@@ -22,4 +22,4 @@ reverse.o: reverse.cpp saveload.h actions.h structures.h
 	$(CXX) $(CXXFLAGS) -c reverse.cpp
 
 clean:
-	rm -f $(TARGET) testing_ver_2.o actions.o structures.o save1.txt save2.txt
+	rm -f $(TARGET) testing_ver_2.o actions.o structures.o save*.txt

@@ -2,6 +2,7 @@
 #include <string>
 #include "printing.h"
 #include "structures.h"
+#include "tutorial.h"
 
 using namespace std;
 

@@ -4,6 +4,7 @@
 #include <vector>
 #include "structures.h"
 #include "actions.h"
+#include "saveload.h"
 
 using namespace std;
 
