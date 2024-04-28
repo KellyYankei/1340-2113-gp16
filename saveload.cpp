@@ -28,17 +28,19 @@ void save(int slot, card pyramid[21], card deck[15], vector<action> steps) {
 		fin >> sTmp;
 		if (!fin.eof()) {
 			cout << "Existing save in this slot. Overwrite save? (y/n) ";
-			cin >> input;
-			while (input != "y" && input != "n")
-				cout << endl << "Invalid input" << endl << "Existing save in this slot. Overwrite save? (y/n) " << endl;
-				cin >> input;
+			getline(cin, input);
+			while (input != "y" && input != "n") {
+				cout << endl << "Invalid input" << endl << "Existing save in this slot. Overwrite save? (y/n) ";
+				getline(cin, input);
+			}
 			if (input == "n") {
-				cout << "Save cancelled.";
+				cout << endl << "Save cancelled.";
 				return;
 			}
 		}
 	}
 
+	cout << endl;
 	fin.close();
 
 	//write save to file
