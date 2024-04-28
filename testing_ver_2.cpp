@@ -11,7 +11,10 @@
 //#include <ncurses.h>
 #include "actions.h"
 #include "structures.h"
+#include "saveload.h"
+#include "record.h"
 //#include "board.h"
+#include "reverse.h"
 
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
@@ -247,13 +250,18 @@ int main() {
     printmap(pyramid);
     print_deck(pos, deck, oppo, show);
     
+    vector<action> record;
+    int currentStateIndex = 0;
+    string fileName;
+    //saveGameProgress(fileName,record);    //shirley's version
+
     string command, line;
     vector<string> commands;
 
     //if (start()!=1){return 0;}; //if chosen mode is "start new game"
 	
     while (true){
-        cout << "Enter your command(\'f\'--flip; \'q\'--quit): ";
+        cout << "Enter your command(\'f\'--flip; \'q\'--quit; \'s\'--save; \'r\'--reverse): ";
         getline(cin,line);
         istringstream iss(line);
         while (iss >> command){
@@ -281,15 +289,32 @@ int main() {
                    pos = -1; oppo--;
                 }   
             }
+            else if (commands[0] == "s"){
+                int slot;
+                cout << "Choose the storing slot (1/2): ";
+                cin >> slot;
+                cout << endl;
+                save(slot,pyramid,deck,record);
+            }
 
+            else if (commands[0] == "r"){
+                if (deleteLastStep(record,pyramid,deck)){
+                cout << CLSCR;
+                printmap(pyramid);
+                print_deck(pos, deck, oppo, show);
+                }
+            }
+        
             else if (commands[0].size() == 2){
                 if (checkFormat(commands[0])) {
-                    if (makeMatch(commands[0],"",pyramid,deck,pos,show)){
+                    action match = makeMatch(commands[0],"",pyramid,deck,pos,show);
+                    if (match.success){
                         set_status(pyramid);
                         cout << CLSCR;
-                    printmap(pyramid);
-                    print_deck(pos, deck, oppo, show);
-                    cout << RED << commands[0] << " has be eliminated" << RESET << endl;
+                        printmap(pyramid);
+                        print_deck(pos, deck, oppo, show);
+                        record.push_back(match);
+                        cout << RED << commands[0] << " has be eliminated" << RESET << endl;
                     }
                 }
                 else {
@@ -303,12 +328,13 @@ int main() {
       
         else if (commands.size() == 2){
             if (checkFormat(commands[0]) && checkFormat(commands[1])){
-
-                if (makeMatch(commands[0],commands[1],pyramid,deck,pos,show)) {
+                action match = makeMatch(commands[0],commands[1],pyramid,deck,pos,show);
+                if (match.success) {
                     set_status(pyramid);
                     cout << CLSCR;
                     printmap(pyramid);
                     print_deck(pos, deck, oppo, show);
+                    record.push_back(match);
                     cout << RED << commands[0] << " has be eliminated" << RESET << endl;
                 }
                 else {
