@@ -2,13 +2,13 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "saveload.h"
 #include "structures.h"
+#include "actions.h"
 
 using namespace std;
 
 //2 slots offered
-void save(int slot, card pyramid[21], card deck[15], vector<string> steps) {
+void save(int slot, card pyramid[21], card deck[15], vector<action> steps) {
 	//initialize save
 	string filename;
 	if (slot == 1)
@@ -28,9 +28,10 @@ void save(int slot, card pyramid[21], card deck[15], vector<string> steps) {
 		fin >> sTmp;
 		if (!fin.eof()) {
 			cout << "Existing save in this slot. Overwrite save? (y/n) ";
-			getline(cin, input);
+			cin >> input;
 			while (input != "y" && input != "n")
-				cout << endl << "Invalid input" << endl << "Existing save in this slot. Overwrite save? (y/n) ";
+				cout << endl << "Invalid input" << endl << "Existing save in this slot. Overwrite save? (y/n) " << endl;
+				cin >> input;
 			if (input == "n") {
 				cout << "Save cancelled.";
 				return;
@@ -41,7 +42,7 @@ void save(int slot, card pyramid[21], card deck[15], vector<string> steps) {
 	fin.close();
 
 	//write save to file
-	ofstream fout(filename.c_str());
+	ofstream fout(filename);
 	int i;
 
 	if (fout.fail()) {
@@ -49,15 +50,15 @@ void save(int slot, card pyramid[21], card deck[15], vector<string> steps) {
 		fout.close();
 		return;
 	}
-
+	cout << "open file" << endl;
 	for (i = 0; i < 21; i++)
 		fout << pyramid[i].suit << ' ' << pyramid[i].num << ' ' << pyramid[i].status << endl;
 
 	for (i = 0; i < 15; i++)
 		fout << deck[i].suit << ' ' << deck[i].num << ' ' << deck[i].status << endl;
 
-	for (i = 0; i < steps.size(); i++)
-		fout << steps[i] << endl;
+//	for (i = 0; i < steps.size(); i++)
+//		fout << steps[i] << endl;
 
 	fout.close();
 	cout << "Save successful." << endl;
@@ -65,7 +66,7 @@ void save(int slot, card pyramid[21], card deck[15], vector<string> steps) {
 	return;
 }
 
-void load(int slot, card pyramid[21], card deck[15], vector<string>& steps) {
+void load(int slot, card pyramid[21], card deck[15], vector<action>& steps) {
 	//initialize load
 	string filename;
 	if (slot == 1)
@@ -94,8 +95,8 @@ void load(int slot, card pyramid[21], card deck[15], vector<string>& steps) {
 	for (i = 0; i < 15; i++)
 		fin >> deck[i].suit >> deck[i].num >> deck[i].status;
 
-	while (fin >> sTmp)
-		steps.push_back(sTmp);
+//	while (fin >> sTmp)
+//		steps.push_back(sTmp);
 
 	fin.close();
 	cout << "Load successful." << endl;
