@@ -215,6 +215,7 @@ void tutorial() {
 
 	//19. succeed in 17, end of tutorial
 	string instructions11b[] = {
+		"Congratulations!",
 		"Now you have got the gist of the game.",
 		"Have fun!"
 	};
@@ -743,6 +744,7 @@ void tutorial() {
 				}
 				else
 					idx[0] = 16;//jump to 10a
+				idx[1] = 0;
 			}
 			else if (input != "Q") {
 				cout << "Invalid input";
@@ -865,8 +867,6 @@ void tutorial() {
 			printInstruction(instructions11b[idx[1]]);
 			if (idx[1] == 0)
 				printCommands(0, 1, 0);
-			else if (idx[1] == size(instructions11b) - 1)
-				printCommands(1, 0, 0);
 			else
 				printCommands(1, 1, 0);
 			cout << endl << "Enter command: ";
@@ -876,6 +876,10 @@ void tutorial() {
 				idx[1] -= 1;
 			else if (input == "N")
 				idx[1] += 1;
+			else if (input != "Q") {
+				cout << "Invalid input";
+				delay(1);
+			}
 
 			if (idx[1] == size(instructions11b))
 				return;//end of tutorial
