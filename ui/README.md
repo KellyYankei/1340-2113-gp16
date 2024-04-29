@@ -18,10 +18,10 @@ Zhen Qi UID: 3036127402
 4. When there's no proper choice in current situation, player can use the "flip" function. The deck at the bottom would be fliped up once for each 'f'. With the filped up card, elimination may be easier. When the deck is filped to the end, the player can input 'f' again and the deck would be reset without the cards that have been eliminated. But remember, the deck can be reset maximum 2 times.
 
 ## Key Features
-1.Simple game rules that make every players to get started.
-2.Unique interface.
-3.Randomly generated deck, brings players excited game experience.
-4.Save system enables player to start from the step he/she played last time.
+1.Simple game rules that make every players to get started. <br>
+2.Unique interface. <br>
+3.Randomly generated deck, brings players excited game experience. <br>
+4.Save system enables player to start from the step he/she played last time. <br>
 
 ## Requirements Implementation
 ### 1.Generation of random decks
