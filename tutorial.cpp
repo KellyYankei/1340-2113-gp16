@@ -267,8 +267,11 @@ void tutorial() {
 			else if (input == "N" && idx[1] != size(instructions1) - 1)
 				idx[1] += 1;
 			else if (idx[1] == size(instructions1) - 1) {
-				if (input == "C8 D1" || input == "D1 C8")
+				if (input == "C8 D1" || input == "D1 C8") {
 					idx[0] = 3; //jump to 2b
+					tutPyramid[17].status = 0;
+					tutPyramid[18].status = 0;
+				}
 				else
 					idx[0] = 2; //jump to 2a
 				idx[1] = 0;
@@ -302,8 +305,11 @@ void tutorial() {
 			else if (input == "N" && idx[1] != size(instructions2a) - 1)
 				idx[1] += 1;
 			else if (idx[1] == size(instructions2a) - 1) {
-				if (input == "C8 D1" || input == "D1 C8")
+				if (input == "C8 D1" || input == "D1 C8") {
 					idx[0] = 3;//jump to 2b
+					tutPyramid[17].status = 0;
+					tutPyramid[18].status = 0;
+				}
 				idx[1] = 0;
 			}
 			else {
@@ -329,8 +335,10 @@ void tutorial() {
 			else if (input == "N" && idx[1] != size(instructions2b) - 1)
 				idx[1] += 1;
 			else if (idx[1] == size(instructions2b) - 1) {
-				if (input == "S9")
+				if (input == "S9") {
 					idx[0] = 5;//jump to 3b
+					tutPyramid[12].status = 0;
+				}
 				else
 					idx[0] = 4;//jump to 3a
 				idx[1] = 0;
@@ -358,8 +366,10 @@ void tutorial() {
 			else if (input == "N" && idx[1] != size(instructions3a) - 1)
 				idx[1] += 1;
 			else if (idx[1] == size(instructions3a) - 1) {
-				if (input == "S9")
+				if (input == "S9") {
 					idx[0] = 3;//jump to 3b
+					tutPyramid[12].status = 0;
+				}
 				idx[1] = 0;
 			}
 			else {
@@ -412,6 +422,7 @@ void tutorial() {
 			else if (idx[1] == size(instructions4) - 1) {
 				if (input == "D3 S6" || input == "S6 D3") {
 					idx[0] = 8;//jump to 5b
+					tutPyramid[15].status = 0;
 					tutDeck[0].status = 0;
 					deck_movable[0] = tutDeck[1];
 				}
@@ -445,6 +456,7 @@ void tutorial() {
 			else if (idx[1] == size(instructions5a) - 1) {
 				if (input == "D3 S6" || input == "S6 D3") {
 					idx[0] = 8;//jump to 5b
+					tutPyramid[15].status = 0;
 					tutDeck[0].status = 0;
 					deck_movable[0] = tutDeck[1];
 				}
@@ -619,6 +631,7 @@ void tutorial() {
 				if (input == "C2 S7" || input == "S7 C2") {
 					idx[0] = 14;//jump to 8b
 					pos += 1;
+					tutPyramid[19].status = 0;
 					tutDeck[4].status = 0;
 					deck_movable[0] = tutDeck[5];
 				}
@@ -653,6 +666,7 @@ void tutorial() {
 				if (input == "C2 S7" || input == "S7 C2") {
 					idx[0] = 14;//jump to 8b
 					pos += 1;
+					tutPyramid[19].status = 0;
 					tutDeck[4].status = 0;
 					deck_movable[0] = tutDeck[5];
 				}
@@ -711,8 +725,11 @@ void tutorial() {
 			else if (input == "N" && idx[1] != size(instructions9) - 1)
 				idx[1] += 1;
 			else if (idx[1] == size(instructions9) - 1) {
-				if (input == "S5 D4" || input == "D4 S5")
+				if (input == "S5 D4" || input == "D4 S5") {
 					idx[0] = 17;//jump to 10b
+					tutPyramid[1].status = 0;
+					tutPyramid[2].status = 0;
+				}
 				else
 					idx[0] = 16;//jump to 10a
 			}
@@ -759,6 +776,8 @@ void tutorial() {
 			else if (idx[1] == size(instructions10a) - 1) {
 				if (input == "S5 D4" || input == "D4 S5") {
 					idx[0] = 17;
+					tutPyramid[1].status = 0;
+					tutPyramid[2].status = 0;
 				}
 				idx[1] = 0;
 			}
@@ -786,8 +805,10 @@ void tutorial() {
 			else if (input == "N" && idx[1] != size(instructions10b) - 1)
 				idx[1] += 1;
 			else if (idx[1] == size(instructions10b) - 1) {
-				if (input == "C9")
+				if (input == "C9") {
 					idx[0] = 19;//jump to 11b
+					tutPyramid[0].status = 0;
+				}
 				else
 					idx[0] = 18;//jump to 11a
 				idx[1] = 0;
@@ -816,8 +837,10 @@ void tutorial() {
 			else if (input == "N" && idx[1] != size(instructions11a) - 1)
 				idx[1] += 1;
 			else if (idx[1] == size(instructions11a) - 1) {
-				if (input == "C9")
+				if (input == "C9") {
 					idx[0] = 19;//jump to 11b
+					tutPyramid[0].status = 0;
+				}
 				idx[1] = 0;
 			}
 			else {
