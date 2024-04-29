@@ -85,10 +85,10 @@ void tutorial() {
 
 	//1. introduce pyramid
 	string instructions1[] = {
-		"This is the PYRAMID, with 21 cards",
+		"This is the PYRAMID, with 21 cards.",
 		"Each card face consists of a letter and a number from 1 to 9.",
 		"The letters are C, D, S and H, representing the four suits -",
-		"S(pades), D(iamonds), C(lubs), and H(earts).",
+		"C(lubs), D(iamonds), S(pades), and H(earts).",
 		"Each suit is represented by its initial letter (e.g. \"S\" for Spades).",
 		"You can only remove a card that is not obstructed by other cards below it.",
 		"For the initial case, this means only cards in the bottom row can be removed.",
@@ -109,28 +109,28 @@ void tutorial() {
 		"Great!",
 		"You can see that the card S9 is now uncovered.",
 		"Since its number is already 9, it can be removed without matching.",
-		"Simply enter its face to remove it."
+		"Simply enter its face now to remove it."
 	};
 
 	//4. fail in 3
 	string instructions3a[] = {
 		"Perhaps the instruction was unclear? Let me repeat.",
 		"S9 already has number 9, so you can remove it without matching.",
-		"Simply enter its face to remove it."
+		"Simply enter its face now to remove it."
 	};
 
 	//5. succeed in 3, foreshadow
 	string instructions3b[] = {
 		"You are doing very well!",
-		"But oops, looks like we don\'t have any more matches..."
+		"But oops, looks like we don\'t have any more matches...",
 		"Never mind, the new feature is here to save you -",
 	};
 
 	//6. introduce deck
 	string instructions4[] = {
-		"The DECK."
-		"It provides you with extra options for matching."
-		"And guess what? We have a match right there!"
+		"The DECK.",
+		"It provides you with extra options for matching.",
+		"And guess what? We have a match right there!",
 		"Enter the matching pair, separated by a space."
 	};
 
@@ -442,6 +442,11 @@ void tutorial() {
 				cout << "Invalid input";
 				delay(1);
 			}
+
+			if (idx[1] == -1) {
+				idx[0] = 5;//jump to 3b
+				idx[1] = size(instructions3b) - 1;
+			}
 		}
 
 		else if (idx[0] == 7) {
@@ -602,7 +607,7 @@ void tutorial() {
 					pos += 1;
 					deck_movable[1] = deck_movable[0];
 					if (pos == 2) {
-						idx[1] = 10;//jump to 6b
+						idx[0] = 10;//jump to 6b
 						deck_movable[0] = tutDeck[3];
 					}
 					else if (pos == 3) {
