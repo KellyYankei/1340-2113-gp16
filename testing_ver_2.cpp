@@ -114,8 +114,8 @@ void Initialzing(card Cards[], card pyramid[], card deck[]){
 
     card temp;
     int randomIndex = 0;
-    for (int i = 0; i < 36; i++){
-        randomIndex = rand() % 36;
+    for (int i = 1; i < 36; i++){
+        randomIndex = rand() % i;
         temp = Cards[i];
         Cards[i] = Cards[randomIndex];
         Cards[randomIndex] = temp;
