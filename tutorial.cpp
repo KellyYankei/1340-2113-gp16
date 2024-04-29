@@ -24,13 +24,13 @@ void delay(int t) {
 void printInstruction(string instruction) {
 	int l = instruction.length(), i;
 
-	cout << BLUE << '╭';
+	cout << BLUE << "╭";
 	for (i = 0; i < l; i++)
 		cout << "─";
-	cout << '╮' << endl << '│' << instruction << '│' << endl << '╰';
+	cout << "╮" << endl << "│" << instruction << "│" << endl << "╰";
 	for (i = 0; i < l; i++)
 		cout << "─";
-	cout << '╯' << endl << RESET;
+	cout << "╯" << endl << RESET;
 }
 
 //print in blue instruction for useful commands (P, N, Q), can control whether to print P or N
@@ -47,7 +47,7 @@ void printCommands(bool p1, bool p2, bool p3) {
 	if (p3)
 		cout << commands[2] << ", ";
 
-	cout << commands[2] << endl << RESET;
+	cout << commands[3] << endl << RESET;
 }
 
 //run the entire tutorial
@@ -248,7 +248,7 @@ void tutorial() {
 				idx[1] -= 1;
 			else if (input == "N")
 				idx[1] += 1;
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -284,7 +284,7 @@ void tutorial() {
 					idx[0] = 2; //jump to 2a
 				idx[1] = 0;
 			}
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -320,7 +320,7 @@ void tutorial() {
 				}
 				idx[1] = 0;
 			}
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -351,7 +351,7 @@ void tutorial() {
 					idx[0] = 4;//jump to 3a
 				idx[1] = 0;
 			}
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -380,7 +380,7 @@ void tutorial() {
 				}
 				idx[1] = 0;
 			}
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -400,7 +400,7 @@ void tutorial() {
 				idx[1] -= 1;
 			else if (input == "N")
 				idx[1] += 1;
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -438,7 +438,7 @@ void tutorial() {
 					idx[0] = 7;//jump to 5a
 				idx[1] = 0;
 			}
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -470,7 +470,7 @@ void tutorial() {
 				}
 				idx[1] = 0;
 			}
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -504,7 +504,7 @@ void tutorial() {
 					idx[0] = 9;//jump to 6a
 				idx[1] = 0;
 			}
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -536,7 +536,7 @@ void tutorial() {
 				}
 				idx[1] = 0;
 			}
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -574,7 +574,7 @@ void tutorial() {
 					idx[0] = 11;//jump to 7a
 				idx[1] = 0;
 			}
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -612,7 +612,7 @@ void tutorial() {
 				}
 				idx[1] = 0;
 			}
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -647,7 +647,7 @@ void tutorial() {
 					idx[0] = 13;//jump to 8a
 				idx[1] = 0;
 			}
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -680,7 +680,7 @@ void tutorial() {
 				}
 				idx[1] = 0;
 			}
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -701,7 +701,7 @@ void tutorial() {
 				idx[1] -= 1;
 			else if (input == "N")
 				idx[1] += 1;
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -741,7 +741,7 @@ void tutorial() {
 				else
 					idx[0] = 16;//jump to 10a
 			}
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -789,7 +789,7 @@ void tutorial() {
 				}
 				idx[1] = 0;
 			}
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -821,7 +821,7 @@ void tutorial() {
 					idx[0] = 18;//jump to 11a
 				idx[1] = 0;
 			}
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
@@ -851,7 +851,7 @@ void tutorial() {
 				}
 				idx[1] = 0;
 			}
-			else {
+			else if (input != "Q") {
 				cout << "Invalid input";
 				delay(1);
 			}
