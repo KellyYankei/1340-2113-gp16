@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <time.h>
 #include "judgement.h"
 #include "printing.h"
 #include "structures.h"
@@ -10,6 +11,13 @@ using namespace std;
 #define BLUE	"\033[34m"
 #define CLSCR	"\033c"
 #define RESET	"\033[0m"
+
+//for waiting t seconds before further execution
+void delay(int t) {
+	clock_t start = clock();
+	clock_t period = (clock_t)t * CLOCKS_PER_SEC;
+	while ((clock() - start) < period);
+}
 
 //for printing tutorial instructions
 //reads instruction as a string and output it in blue in a speech bubble
@@ -242,7 +250,7 @@ void tutorial() {
 				idx[1] += 1;
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 
 			//jump to 1
@@ -278,7 +286,7 @@ void tutorial() {
 			}
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 
 			//jump to 0
@@ -314,7 +322,7 @@ void tutorial() {
 			}
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 		}
 
@@ -345,7 +353,7 @@ void tutorial() {
 			}
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 		}
 
@@ -374,7 +382,7 @@ void tutorial() {
 			}
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 		}
 
@@ -394,7 +402,7 @@ void tutorial() {
 				idx[1] += 1;
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 
 			//jump to 4
@@ -432,7 +440,7 @@ void tutorial() {
 			}
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 		}
 
@@ -464,7 +472,7 @@ void tutorial() {
 			}
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 		}
 
@@ -498,7 +506,7 @@ void tutorial() {
 			}
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 		}
 
@@ -530,7 +538,7 @@ void tutorial() {
 			}
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 		}
 
@@ -568,7 +576,7 @@ void tutorial() {
 			}
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 		}
 
@@ -606,7 +614,7 @@ void tutorial() {
 			}
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 		}
 
@@ -641,7 +649,7 @@ void tutorial() {
 			}
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 		}
 
@@ -674,7 +682,7 @@ void tutorial() {
 			}
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 		}
 
@@ -695,7 +703,7 @@ void tutorial() {
 				idx[1] += 1;
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 
 			//jump to 9
@@ -735,7 +743,7 @@ void tutorial() {
 			}
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 
 			//jump to 8b
@@ -783,7 +791,7 @@ void tutorial() {
 			}
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 		}
 
@@ -815,7 +823,7 @@ void tutorial() {
 			}
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 		}
 
@@ -845,7 +853,7 @@ void tutorial() {
 			}
 			else {
 				cout << "Invalid input";
-				_sleep(1000);
+				delay(1);
 			}
 		}
 
