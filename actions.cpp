@@ -16,7 +16,7 @@ struct action;
 
 //Match and remove one or two cards, returns whether removal is successful. Input is assumed to be valid, please check validity before implementing function.
 //(If only one card with num 9 is entered, plug in card2 as empty string)
-action makeMatch(string card1, string card2, card pyramid[21], card deck[15], int& pos, card deck_movable[2]) {
+action makeMatch(string card1, string card2, card pyramid[21], card deck[15], int& pos, card deck_movable[2], int& oppo1) {
 	char suit1, suit2;
 	int num1, num2, i, j;
 
@@ -44,10 +44,13 @@ action makeMatch(string card1, string card2, card pyramid[21], card deck[15], in
 				}
 				else if (deck[i] == deck_movable[1]) {
 					deck[i].status = 0;
+////					
 					pos -= 1;
+					if(pos<0) oppo1++;
 					int type = 3;
 					return action(1,1,'r',type,i);
 				}
+////else: invalid!(if the card is not shown in the deck)
 			}
 		}
 	}
@@ -86,6 +89,7 @@ action makeMatch(string card1, string card2, card pyramid[21], card deck[15], in
 							pyramid[i].status = 0;
 							deck[j].status = 0;
 							pos -= 1;
+							if(pos<0) oppo1++;
 							int type = 4;
 							return action(1,0,1,'r',type,i,j);
 						}
@@ -109,6 +113,7 @@ action makeMatch(string card1, string card2, card pyramid[21], card deck[15], in
 							deck[i].status = 0;
 							pyramid[j].status = 0;
 							pos -= 1;
+							if(pos<0) oppo1++;
 							int type = 4;
 							return action(1,0,1,'r',type,j,i);
 						}
@@ -120,6 +125,7 @@ action makeMatch(string card1, string card2, card pyramid[21], card deck[15], in
 						deck[i].status = 0;
 						deck[j].status = 0;
 						pos -= 1;
+						if(pos<0) oppo1++;
 						bool tmp = 0;
 						int type = 5;
 						return action(1,0,tmp,type,i,j);
