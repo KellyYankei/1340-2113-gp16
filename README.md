@@ -14,7 +14,7 @@ Zhen Qi UID: 3036127402
 ## Game Rules
 1. The green cards are comprised of the cards at the bottom of the upper deck and the deck below which can be fliped up. The white cards are the rest of the cards.
 2. During the game period, player can only choose the green card to operate the elimination.
-3. A successful elimination can be achieved by choosing any two cards that add up to 9, or one card that equals 9. The choice is made by inputting the suit and number of the card. For example, if the player want to choose "6 of spades", he/she needs to input "s6". If the player want to choose two cards, he/she needs to input one by one, like "s1" (press enter) "s6" (press enter).
+3. A successful elimination can be achieved by choosing any two cards that add up to 9, or one card that equals 9. The choice is made by inputting the suit and number of the card. For example, if the player want to choose "6 of spades", he/she needs to input "S6". If the player want to choose two cards, he/she needs to input one by one, like "S1" (press enter) "S6" (press enter).
 4. When there's no proper choice in current situation, player can use the "flip" function. The deck at the bottom would be fliped up once for each 'f'. With the filped up card, elimination may be easier. When the deck is filped to the end, the player can input 'f' again and the deck would be reset without the cards that have been eliminated. But remember, the deck can be reset maximum 2 times.
 
 ## Key Features
