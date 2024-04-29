@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include "structures.h"
+#include "actions.h"
 using namespace std;
 
 #ifndef SAVELOAD_H
