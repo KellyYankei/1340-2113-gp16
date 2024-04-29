@@ -30,6 +30,9 @@ printing.o: source/printing.cpp source/structures.h
 judgement.o: source/judgement.cpp source/structures.h
 	$(CXX) $(CXXFLAGS) -c source/judgement.cpp
 
+tutorial.o: tutorial.cpp source/judgement.h source/printing.h source/structures.h
+	$(CXX) $(CXXFLAGS) -c $<
+
 clean:
 	rm -f $(TARGET) testing_ver_2.o actions.o structures.o save*.txt
 
