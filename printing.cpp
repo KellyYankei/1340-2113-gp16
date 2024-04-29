@@ -107,7 +107,7 @@ int searchpyramid(card pyramid[], char s, int n){
 	return -1
 }
 
-int print_deck(int pos1, card deck1[], int oppo1, card show[2])   //pos1 means the position of the left card in the array "deck" defined below (not deck1)
+int print_deck(int &pos1, card deck1[], int &oppo1, card show[2])   //pos1 means the position of the left card in the array "deck" defined below (not deck1)
 {//show means the present card displayed. The status will be 1 normally, and will be 0 if there is no card showed in the corresponding position.
     card deck[20];    //use this array to record the remaining cards in the deck below  
     int num=0;       //use this to count the number of remaining cards in the deck below
