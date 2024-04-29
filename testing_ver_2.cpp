@@ -347,6 +347,14 @@ int main() {
             }
         }
         commands.clear();
+
+	if(pyramid[0].status==0){
+            cout << CLSCR;
+            printmap(pyramid);
+            print_deck(pos, deck, oppo, show);
+            cout << RED << "Congratulations! Good game! " << RESET << endl;
+            break;
+        }
     }
     return 0;
 }
