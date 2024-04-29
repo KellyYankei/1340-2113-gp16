@@ -183,6 +183,8 @@ int print_deck(int pos1, card deck1[], int oppo1, card show[2])   //pos1 means t
 	    show[1].status=0;
 	    return 2;
     }
+	
+    if(pos<0) pos=num;
     
     if(pos1>=1 && pos1<num){
         printspace(2);
@@ -307,7 +309,7 @@ int main() {
         
             else if (commands[0].size() == 2){
                 if (checkFormat(commands[0])) {
-                    action match = makeMatch(commands[0],"",pyramid,deck,pos,show);
+                    action match = makeMatch(commands[0],"",pyramid,deck,pos,show,oppo);
                     if (match.success){
                         set_status(pyramid);
                         cout << CLSCR;
@@ -328,7 +330,7 @@ int main() {
       
         else if (commands.size() == 2){
             if (checkFormat(commands[0]) && checkFormat(commands[1])){
-                action match = makeMatch(commands[0],commands[1],pyramid,deck,pos,show);
+                action match = makeMatch(commands[0],commands[1],pyramid,deck,pos,show,oppo);
                 if (match.success) {
                     set_status(pyramid);
                     cout << CLSCR;
