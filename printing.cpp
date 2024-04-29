@@ -200,6 +200,6 @@ int print_deck(int &pos1, card deck1[], int &oppo1, card show[2])   //pos1 means
 	    cout << endl;
     }
 
-    if(num==pos1) return 1; //This happens means the player have used up an opportunity to turn over the whole deck below. Special solution is needed outside.
+    if(num<=pos1) return 1; //This happens means the player have used up an opportunity to turn over the whole deck below. Special solution is needed outside.
     return 0; 
 }
