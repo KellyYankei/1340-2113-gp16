@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iterator>
 #include <string>
 #include <time.h>
 #include "judgement.h"
@@ -11,6 +12,14 @@ using namespace std;
 #define BLUE	"\033[34m"
 #define CLSCR	"\033c"
 #define RESET	"\033[0m"
+
+//for calculating the size of a string array under C++11 standard
+static int size(const string arr[]) {
+	size_t i = 0;
+	while (!arr[i].empty())
+		i++;
+	return i;
+}
 
 //for waiting t seconds before further execution
 void delay(int t) {
