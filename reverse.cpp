@@ -17,17 +17,17 @@ bool deleteLastStep(vector<action> record, card pyramid[21], card deck[15]){
         int index2 = step.index2;
         switch (step.type){
             case 1:
-                pyramid[index1].status = 2;
+                pyramid[index1].status = 1;
             break;
             case 2:
-                pyramid[index1].status = 2;
-                pyramid[index2].status = 2;
+                pyramid[index1].status = 1;
+                pyramid[index2].status = 1;
             break;
             case 3:
                 deck[index1].status = 2;
             break;
             case 4:
-                pyramid[index1].status = 2;
+                pyramid[index1].status = 1;
                 deck[index2].status = 2;
             break;
             case 5:
