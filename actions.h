@@ -59,7 +59,7 @@ struct action{
 	// flip, type = 6
 };
 bool checkFormat(string input);
-action makeMatch(string card1, string card2, card pyramid[21], card deck[15], int& pos, card deck_movable[2]);
+action makeMatch(string card1, string card2, card pyramid[21], card deck[15], int& pos, card deck_movable[2], int &oppo1);
 void reset(card pyramid[21], card deck[15], int& pos);
 
 #endif
