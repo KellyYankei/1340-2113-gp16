@@ -150,8 +150,8 @@ void tutorial() {
 
 	//9. fail in 8
 	string instructions6a[] = {
-		"Not getting the hang of it? Let's make it one sentence: ",
-		"Enter \"F\" to flip through the deck for more cards to match. Now try.",
+		"Not getting the hang of it? Let's make it brief: ",
+		"You need to flip through the deck for more cards to match.",
 		"For flipping, simply enter \"F\"."
 	};
 
@@ -643,7 +643,6 @@ void tutorial() {
 			else if (idx[1] == size(instructions7b) - 1) {
 				if (input == "C2 S7" || input == "S7 C2") {
 					idx[0] = 14;//jump to 8b
-					pos += 1;
 					tutPyramid[19].status = 0;
 					tutDeck[4].status = 0;
 					deck_movable[0] = tutDeck[5];
@@ -678,7 +677,6 @@ void tutorial() {
 			else if (idx[1] == size(instructions7b) - 1) {
 				if (input == "C2 S7" || input == "S7 C2") {
 					idx[0] = 14;//jump to 8b
-					pos += 1;
 					tutPyramid[19].status = 0;
 					tutDeck[4].status = 0;
 					deck_movable[0] = tutDeck[5];
@@ -754,14 +752,15 @@ void tutorial() {
 			//jump to 8b
 			if (idx[1] == -1) {
 				idx[0] = 14;
-				idx[1] = 0;
+				idx[1] = size(instructions8b) - 1;
 				for (i = 3; i < 21; i++)
-					tutPyramid[i].status = 2;
+					tutPyramid[i].status = 1;
 				tutPyramid[12].status = 0;
 				tutPyramid[15].status = 0;
 				tutPyramid[17].status = 0;
 				tutPyramid[18].status = 0;
 				tutPyramid[19].status = 0;
+				set_status(tutPyramid);
 				for (i = 0; i < 15; i++)
 					tutDeck[i].status = 1;
 				tutDeck[0].status = 0;
