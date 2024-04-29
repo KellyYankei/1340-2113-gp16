@@ -8,8 +8,9 @@ void printcard_up(int status);
 void printcard_mid(int status, char suit, int num);
 void printcard_bottom(int status);
 void printmap(card map[]);
-void Initializing(card deck[]);
-void searchpyramid(card pyramid[], char s, int n);
-void print_deck(int &pos1, card deck[], int &oppo1);
+void Initializing(card Cards[], card pyramid[], card deck[]);
+int searchpyramid(card pyramid[], char s, int n);
+int searchshow(card show[], char s, int n);
+int print_deck(int &pos1, card deck[], int &oppo1, card show[2]);
 
 #endif
