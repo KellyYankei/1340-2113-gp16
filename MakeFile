@@ -1,16 +1,13 @@
 CXX = g++
-CXXFLAGS = -I lib/ncurses-6.4/include -I lib/ncurses-6.4/include/ncursesw -L lib/ncurses-6.4/lib -pedantic-errors -std=c++11 -lncursesw
+CXXFLAGS = -std=c++11
 
 TARGET = testing_ver_2
 
-$(TARGET): testing_ver_2.o actions.o structures.o saveload.o reverse.o printing.o board.o
-	$(CXX) $(CXXFLAGS) -o $(TARGET) testing_ver_2.o actions.o structures.o saveload.o reverse.o board.o printing.o
+$(TARGET): testing_ver_2.o actions.o structures.o saveload.o reverse.o printing.o judgement.o
+	$(CXX) $(CXXFLAGS) -o $(TARGET) testing_ver_2.o actions.o structures.o saveload.o reverse.o printing.o judgement.o
 
-testing_ver_2.o: testing_ver_2.cpp actions.h structures.h saveload.h printing.h board.h
+testing_ver_2.o: testing_ver_2.cpp actions.h structures.h saveload.h printing.h judgement.h
 	$(CXX) $(CXXFLAGS) -c testing_ver_2.cpp
-
-board.o: board.cpp board.h
-	$(CXX) $(CXXFLAGS) -c board.cpp
 
 actions.o: actions.cpp actions.h structures.h
 	$(CXX) $(CXXFLAGS) -c actions.cpp
@@ -26,6 +23,9 @@ reverse.o: reverse.cpp saveload.h actions.h structures.h
 
 printing.o: printing.cpp structures.h
 	$(CXX) $(CXXFLAGS) -c printing.cpp
+
+judgement.o: judgement.cpp structures.h
+	$(CXX) $(CXXFLAGS) -c judgement.cpp
 
 clean:
 	rm -f $(TARGET) testing_ver_2.o actions.o structures.o save*.txt
