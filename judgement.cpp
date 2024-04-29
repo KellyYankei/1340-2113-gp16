@@ -6,6 +6,10 @@ using namespace std;
 //set cards in pyramid to status 2 if they are removable
 void set_status(card pyramid[])
 {
+	for (int i = 0; i < 21; i++){
+                if (pyramid[i].status != 0)
+                        pyramid[i].status = 1;
+        }
 	if( (pyramid[0].status==1) && (pyramid[1].status==0) && (pyramid[2].status==0) ) pyramid[0].status=2; 
 	if( (pyramid[1].status==1) && (pyramid[3].status==0) && (pyramid[4].status==0) ) pyramid[1].status=2;
 	if( (pyramid[2].status==1) && (pyramid[4].status==0) && (pyramid[5].status==0) ) pyramid[2].status=2;
