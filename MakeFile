@@ -3,10 +3,10 @@ CXXFLAGS = -std=c++11
 
 TARGET = testing_ver_2
 
-$(TARGET): testing_ver_2.o actions.o structures.o saveload.o reverse.o
-	$(CXX) $(CXXFLAGS) -o $(TARGET) testing_ver_2.o actions.o structures.o saveload.o reverse.o
+$(TARGET): testing_ver_2.o actions.o structures.o saveload.o reverse.o printing.o
+	$(CXX) $(CXXFLAGS) -o $(TARGET) testing_ver_2.o actions.o structures.o saveload.o reverse.o printing.o
 
-testing_ver_2.o: testing_ver_2.cpp actions.h structures.h saveload.h
+testing_ver_2.o: testing_ver_2.cpp actions.h structures.h saveload.h printing.h
 	$(CXX) $(CXXFLAGS) -c testing_ver_2.cpp
 
 actions.o: actions.cpp actions.h structures.h
@@ -20,6 +20,9 @@ saveload.o: saveload.cpp structures.h actions.h
 
 reverse.o: reverse.cpp saveload.h actions.h structures.h
 	$(CXX) $(CXXFLAGS) -c reverse.cpp
+
+printing.o: printing.cpp structures.h
+	$(CXX) $(CXXFLAGS) -c printing.cpp
 
 clean:
 	rm -f $(TARGET) testing_ver_2.o actions.o structures.o save*.txt
