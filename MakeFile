@@ -29,3 +29,5 @@ judgement.o: judgement.cpp structures.h
 
 clean:
 	rm -f $(TARGET) testing_ver_2.o actions.o structures.o save*.txt
+
+.PHONY: clean
