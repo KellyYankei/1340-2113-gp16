@@ -14,10 +14,10 @@ using namespace std;
 #define RED     "\033[31m"
 #define GREEN   "\033[32m"
 
-//functions for formatting
 void printspace(int i){
-    for (int k = 0; k < 5-i; k++)
-        cout << "   ";
+    for (int k = 0; k < 5-i; k++){
+                cout << "   ";
+        }
 }
 
 void printcard_up(int status){
@@ -29,9 +29,9 @@ void printcard_up(int status){
 
 void printcard_mid(int status, char suit, int num){
     if (status == 2)
-        cout << GREEN << "│" << " " << suit << num << " " << "│" << RESET;
+        cout << GREEN << "│ " << suit << num << " │" << RESET;
     else if (status == 1)
-        cout << "│" << " " << suit << num << " " << "│";
+        cout << "│ " << suit << num << " │";
     else
         cout << "│    │";
 }
@@ -43,7 +43,6 @@ void printcard_bottom(int status){
         cout << "└────┘";
 }
 
-//function for printing the pyramid
 void printmap(card map[]){
     for (int i = 0; i < 6; i++){
         printspace(i);
@@ -64,8 +63,7 @@ void printmap(card map[]){
     }
 }
 
-//random generation of game set
-void Initialzing(card Cards[], card pyramid[], card deck[]){
+void Initializing(card Cards[], card pyramid[], card deck[]){
     srand(time(NULL));
     card tmp;
     string suits = "SDHC";
@@ -95,16 +93,25 @@ void Initialzing(card Cards[], card pyramid[], card deck[]){
         deck[i] = Cards[i+21];
         deck[i].status = 2;
     }
+
 }
 
-//look for a certain card in the pyramid
 int searchpyramid(card pyramid[], char s, int n){
     for (int i = 0; i < 21; i++){
         if (pyramid[i].suit == s && pyramid[i].num == n && pyramid[i].status == 2){
-			return i;
-		}   
+            return i; 
+        }
     }
-	return -1
+    return -1;
+}
+
+int searchshow(card show[], char s, int n){
+    for (int i = 0; i < 21; i++){
+        if (show[i].suit == s && show[i].num == n){
+            return i; 
+        }
+    }
+    return -1;
 }
 
 int print_deck(int &pos1, card deck1[], int &oppo1, card show[2])   //pos1 means the position of the left card in the array "deck" defined below (not deck1)
@@ -133,7 +140,7 @@ int print_deck(int &pos1, card deck1[], int &oppo1, card show[2])   //pos1 means
 
     if(oppo1==0)
     {
-	    cout<<"You have used up all the opportunities to move the decks!"<<endl;
+	    cout<<RED << "You have used up all the opportunities to move the decks!"<< RESET <<endl;
 	    show[0]=deck1[0];
 	    show[1]=deck1[0];
 	    show[0].status=0;
@@ -158,8 +165,8 @@ int print_deck(int &pos1, card deck1[], int &oppo1, card show[2])   //pos1 means
         printcard_bottom(2);  
 	    show[0]=deck[pos1];
 	    show[1]=deck[pos1-1];
-	    show[0].status=1;
-	    show[1].status=1;
+	    show[0].status=2;
+	    show[1].status=2;
 	    cout << endl;
     } 
     else if(pos1==0){   //if pos1==0,then only the first card in the deck need to be showed
@@ -173,7 +180,7 @@ int print_deck(int &pos1, card deck1[], int &oppo1, card show[2])   //pos1 means
         printcard_bottom(2);
 	    show[0]=deck[pos1];
 	    show[1]=deck[pos1];
-	    show[0].status=1;
+	    show[0].status=2;
 	    show[1].status=0;
 	    cout << endl;
     }
@@ -189,13 +196,10 @@ int print_deck(int &pos1, card deck1[], int &oppo1, card show[2])   //pos1 means
 	    show[0]=deck[num-1];
 	    show[1]=deck[num-1];
 	    show[0].status=0;
-	    show[1].status=1;
+	    show[1].status=2;
 	    cout << endl;
     }
 
-    if(num==pos) return 1; //This happens means the player have used up an opportunity to turn over the whole deck below. Special solution is needed outside.
+    if(num==pos1) return 1; //This happens means the player have used up an opportunity to turn over the whole deck below. Special solution is needed outside.
     return 0; 
 }
-
-
-//status 0--removed 1--exist 2--can be moved
