@@ -115,7 +115,7 @@ void tutorial() {
 	//4. fail in 3
 	string instructions3a[] = {
 		"Perhaps the instruction was unclear? Let me repeat.",
-		"S9 already has number 9, so you can remove it without matching."
+		"S9 already has number 9, so you can remove it without matching.",
 		"Simply enter its face to remove it."
 	};
 
@@ -375,7 +375,7 @@ void tutorial() {
 				idx[1] += 1;
 			else if (idx[1] == size(instructions3a) - 1) {
 				if (input == "S9") {
-					idx[0] = 3;//jump to 3b
+					idx[0] = 5;//jump to 3b
 					tutPyramid[12].status = 0;
 				}
 				idx[1] = 0;
