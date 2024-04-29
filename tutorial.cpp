@@ -66,13 +66,13 @@ void tutorial() {
 
 	for (i = 0; i < 21; i++) {
 		tutPyramid[i].suit = tutCards[i][0];
-		tutPyramid[i].num = tutCards[i][1];
+		tutPyramid[i].num = tutCards[i][1] - '0';
 		tutPyramid[i].status = 1;
 	}
 
 	for (i = 0; i < 15; i++) {
 		tutDeck[i].suit = tutCards[i + 21][0];
-		tutDeck[i].num = tutCards[i + 21][1];
+		tutDeck[i].num = tutCards[i + 21][1] - '0';
 		tutDeck[i].status = 1;
 	}
 
