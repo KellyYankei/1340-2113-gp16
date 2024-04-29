@@ -43,14 +43,15 @@ action makeMatch(string card1, string card2, card pyramid[21], card deck[15], in
 					return action(1,1,'l',type,i);
 				}
 				else if (deck[i] == deck_movable[1]) {
-					deck[i].status = 0;
-////					
+					deck[i].status = 0;				
 					pos -= 1;
 					if(pos<0) oppo1++;
 					int type = 3;
 					return action(1,1,'r',type,i);
 				}
-////else: invalid!(if the card is not shown in the deck)
+				else{
+					return action(0);
+				}
 			}
 		}
 	}
@@ -135,7 +136,7 @@ action makeMatch(string card1, string card2, card pyramid[21], card deck[15], in
 		}
 	}
 
-	return false;
+	return action(0);
 }
 
 //set the board to initial state (for restarting same game)
