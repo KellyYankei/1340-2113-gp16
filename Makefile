@@ -3,10 +3,10 @@ CXXFLAGS = -I lib/ncurses/include -I lib/ncurses/include/ncursesw -L lib/ncurses
 
 TARGET = testing_ver_2
 
-$(TARGET): testing_ver_2.o actions.o structures.o saveload.o reverse.o printing.o judgement.o board.o
-	$(CXX) $(CXXFLAGS) -o $(TARGET) testing_ver_2.o actions.o structures.o saveload.o reverse.o printing.o judgement.o board.o -lncurses
+$(TARGET): testing_ver_2.o actions.o structures.o saveload.o reverse.o printing.o judgement.o board.o tutorial.o
+	$(CXX) $(CXXFLAGS) -o $(TARGET) testing_ver_2.o actions.o structures.o saveload.o reverse.o printing.o judgement.o board.o tutorial.o -lncurses
 
-testing_ver_2.o: source/testing_ver_2.cpp source/actions.h source/structures.h source/saveload.h source/printing.h source/judgement.h
+testing_ver_2.o: source/testing_ver_2.cpp source/actions.h source/structures.h source/saveload.h source/printing.h source/judgement.h source/tutorial.h
 	$(CXX) $(CXXFLAGS) -c source/testing_ver_2.cpp -lncurses
 
 board.o: source/board.cpp source/board.h 
@@ -30,8 +30,8 @@ printing.o: source/printing.cpp source/structures.h
 judgement.o: source/judgement.cpp source/structures.h
 	$(CXX) $(CXXFLAGS) -c source/judgement.cpp
 
-tutorial.o: tutorial.cpp source/judgement.h source/printing.h source/structures.h
-	$(CXX) $(CXXFLAGS) -c $<
+tutorial.o: source/tutorial.cpp source/judgement.h source/printing.h source/structures.h
+	$(CXX) $(CXXFLAGS) -c source/tutorial.cpp
 
 clean:
 	rm -f $(TARGET) testing_ver_2.o actions.o structures.o save*.txt
