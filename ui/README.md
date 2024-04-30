@@ -64,6 +64,7 @@ Ncurses also optimizes screen changes to reduce the latency experienced when usi
 ## Instructions
 Start the game with these commands: 
 ```
+make .....
 make clean
 make
 ./bin/main
