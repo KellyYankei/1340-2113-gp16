@@ -31,7 +31,7 @@ int main() {
     card Cards[36], pyramid[21], deck[17], show[2];
     int pos = 0, oppo = 2;
     string s = "HSDC", n = "123456789";
-
+    bool loaded = false;
     int state = start();
     vector <action> record;
     while (true) {
@@ -42,11 +42,11 @@ int main() {
                 break;
             case 21: // start from the old game save1 
                 endwin();
-                load(1,pyramid,deck,show,record,pos,oppo);
+                loaded = load(1,pyramid,deck,show,record,pos,oppo);
                 break;
             case 22: // start from the old game save2
                 endwin();
-                load(2,pyramid,deck,show,record,pos,oppo);
+                loaded = load(2,pyramid,deck,show,record,pos,oppo);
                 break;
             case 3: // tutorial
                 endwin();
@@ -57,7 +57,11 @@ int main() {
         }
         if (state == 1|| state == 21 || state == 22) break;
     }
-    if(state ==1){
+
+    if ((state == 21 || state == 22) && !loaded)
+        return 0;
+
+    if(state == 1){
         Initializing(Cards, pyramid, deck);
         set_status(pyramid);
     }

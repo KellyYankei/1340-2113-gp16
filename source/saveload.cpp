@@ -9,7 +9,7 @@
 using namespace std;
 
 //2 slots offered
-void save(int slot, card pyramid[21], card deck[15], card deck_movable[2], vector<action> steps, int pos, int oppo) {
+bool save(int slot, card pyramid[21], card deck[15], card deck_movable[2], vector<action> steps, int pos, int oppo) {
 	//initialize save
 	string filename;
 	if (slot == 1)
@@ -18,7 +18,7 @@ void save(int slot, card pyramid[21], card deck[15], card deck_movable[2], vecto
 		filename = "save2.txt";
 	else {
 		cout << "Slot does not exist." << endl;
-		return;
+		return false;
 	}
 
 	//check if slot is occupied
@@ -36,7 +36,7 @@ void save(int slot, card pyramid[21], card deck[15], card deck_movable[2], vecto
 			}
 			if (input == "n") {
 				cout << endl << "Save cancelled.";
-				return;
+				return false;
 			}
 		}
 	}
@@ -50,7 +50,7 @@ void save(int slot, card pyramid[21], card deck[15], card deck_movable[2], vecto
 
 	if (fout.fail()) {
 		cout << "Error occurred. Could not save." << endl;
-		return;
+		return false;
 	}
 	cout << "open file" << endl;
 	for (i = 0; i < 21; i++)
@@ -70,10 +70,10 @@ void save(int slot, card pyramid[21], card deck[15], card deck_movable[2], vecto
 	fout.close();
 	cout << "Save successful." << endl;
 
-	return;
+	return true;
 }
 
-void load(int slot, card pyramid[21], card deck[15], card deck_movable[2], vector<action>& steps, int& pos, int& oppo) {
+bool load(int slot, card pyramid[21], card deck[15], card deck_movable[2], vector<action>& steps, int& pos, int& oppo) {
 	//initialize load
 	string filename;
 	if (slot == 1)
@@ -82,7 +82,7 @@ void load(int slot, card pyramid[21], card deck[15], card deck_movable[2], vecto
 		filename = "save2.txt";
 	else {
 		cout << "Slot does not exist." << endl;
-		return;
+		return false;
 	}
 
 	//read file
@@ -92,7 +92,7 @@ void load(int slot, card pyramid[21], card deck[15], card deck_movable[2], vecto
 
 	if (fin.fail()) {
 		cout << "Error occurred. Could not load." << endl;
-		return;
+		return false;
 	}
 
 	for (i = 0; i < 21; i++)
@@ -112,5 +112,5 @@ void load(int slot, card pyramid[21], card deck[15], card deck_movable[2], vecto
 	fin.close();
 	cout << "Load successful." << endl;
 
-	return;
+	return true;
 }
