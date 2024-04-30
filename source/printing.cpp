@@ -117,6 +117,8 @@ int searchshow(card show[], char s, int n){
 }
 //This function is used to print the deck below. The method is to get all the cards in the deck below which haven't been eliminated (deck[] defined in the function) and keep the position of the left card shown in the array(pos1).
 //the input are the pos1(mentioned above), the deck below, the remaining opportunities of Walking through the deck below and the 2 cards shown to the players.
+//The function will return 0 normally, and will return 1 if the deck is flipped to the end (because special judgement is needed in the main function)
+//The function will return 2 if the opportunities is used up.
 int print_deck(int &pos1, card deck1[], int &oppo1, card show[2])   //pos1 means the position of the left card in the array "deck" defined below (not deck1)
 {                                                                   //show means the present card displayed. The status will be 1 normally, and will be 0 if there is no card showed in the corresponding position.
     card deck[20];                                                  //use this array to record the remaining cards in the deck below  
