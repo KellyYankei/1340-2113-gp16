@@ -7,16 +7,17 @@
 #include <cstdlib>
 #include <ctime>
 #include <vector>
-//#include <stdio.h>
-//#include <ncurses.h>
+#include <stdio.h>
+#include <ncurses.h>
 #include "actions.h"
 #include "structures.h"
 #include "saveload.h"
 #include "record.h"
-//#include "board.h"
+#include "board.h"
 #include "reverse.h"
 #include "printing.h"
 #include "judgement.h"
+#include "tutorial.h"
 
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
@@ -30,20 +31,45 @@ int main() {
     card Cards[36], pyramid[21], deck[17], show[2];
     int pos = 0, oppo = 2;
     string s = "HSDC", n = "123456789";
-    Initializing(Cards, pyramid, deck);
-    set_status(pyramid);
+
+    int state = start();
+    vector <action> record;
+    while (true) {
+
+        switch (state) {
+            case 1:
+                endwin();
+                break;
+            case 21: // start from the old game save1 
+                endwin();
+                load(1,pyramid,deck,show,record,pos,oppo);
+                break;
+            case 22: // start from the old game save2
+                endwin();
+                load(2,pyramid,deck,show,record,pos,oppo);
+                break;
+            case 3: // tutorial
+                endwin();
+                tutorial();
+                return 0;
+            case 0:
+                return 0;
+        }
+        if (state == 1|| state == 21 || state == 22) break;
+    }
+    if(state ==1){
+        Initializing(Cards, pyramid, deck);
+        set_status(pyramid);
+    }
     printmap(pyramid);
     print_deck(pos, deck, oppo, show);
 
-    vector<action> record;
     int currentStateIndex = 0;
     string fileName;
     //saveGameProgress(fileName,record);    //shirley's version
 
     string command, line;
     vector<string> commands;
-
-    //if (start()!=1){return 0;}; //if chosen mode is "start new game"
 
     while (true){
         cout << "Enter your command(\'f\'--flip; \'q\'--quit; \'s\'--save; \'r\'--reverse): ";
@@ -62,9 +88,14 @@ int main() {
 
         else if (commands.size() == 1){
             if (commands[0] == "q"){
+                if (ask_if_exit()==1){
+                endwin();
                 cout << CLSCR << RED << "Thank you for playing" << RESET << endl;
                 break;
                 }
+                else{ endwin();
+                cout << RESET << endl;}
+            }
 
             else if (commands[0] == "f"){
                 pos++;
@@ -73,17 +104,22 @@ int main() {
                 if (print_deck(pos, deck, oppo, show) == 1){
                    pos = -1; oppo--;
                 }
-cout<<"Main: "<<pos<<" "<<oppo<<endl;
             }
             else if (commands[0] == "s"){
-                int slot;
-                cout << "Choose the storing slot (1/2): ";
-                cin >> slot;
-                cout << endl;
-                save(slot,pyramid,deck,record);
+                int slot = 0;
+                string slotstr;
+                while (slot != 1 && slot != 2) {
+                    cout << "Choosing the storing slot(1/2): ";
+                    getline(cin,slotstr);
+                    istringstream iss(slotstr);
+                    iss>>slot;
+                    if(slot!=1&&slot!=2){
+                        cout<< "Invalid input. Please enter either 1 or 2." << endl;
+                    }
+                }
+                save(slot,pyramid,deck,show,record,pos,oppo);
                 break;
             }
-
             else if (commands[0] == "r"){
                 if (deleteLastStep(record,pyramid,deck)){
                 cout << CLSCR;
