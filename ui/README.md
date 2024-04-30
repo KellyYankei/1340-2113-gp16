@@ -32,7 +32,8 @@ Zhen Qi UID: 3036127402
 * All the cards are coordinated in arrays so that the deck can be kept safely during the game period.
 
 ### 3.Dynamic memory management
-* 
+* When playing the game, we use STL vector to store the command lines.
+* The vector will be cleaned after each game.
 
 ### 4.File input/output
 * File input and output are implemented in the game status storage.
@@ -42,7 +43,7 @@ Zhen Qi UID: 3036127402
   the old game.
 
 ### 5.Program codes in multiple files
-Program codes are split into different files according to their functions and sorted under different folders.
+* Program codes are split into different files according to their functions and sorted under different folders.
 
 ### 6.Proper indentation and naming style
 * We follow the requirements of proper indentation and naming style carefully.
