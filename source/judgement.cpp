@@ -3,7 +3,8 @@
 #include "structures.h"
 using namespace std;
 
-//set cards in pyramid to status 2 if they are removable
+//The function below is used to check if cards in pyramid can be eliminated. The input array will be changed to atore the newest status.
+//Nothing will be returned by this function.
 void set_status(card pyramid[])
 {
 	for (int i = 0; i < 21; i++){
@@ -34,7 +35,7 @@ void set_status(card pyramid[])
 	
 	return;
 }
-
+//
 bool can_move(card pyramid[], card deck[])//this is a function to judge if any operations can be conducted after the opportunities of flipping the deck below is used up.
 {
 	bool judge1 = 0;
