@@ -32,7 +32,8 @@ Zhen Qi UID: 3036127402
 * All the cards are coordinated in arrays so that the deck can be kept safely during the game period.
 
 ### 3.Dynamic memory management
-* 
+* for in-game operation, we use a STL vector(vector<string>) to store command lines that the user input.
+* The vector will be cleaned after the game finished.
 
 ### 4.File input/output
 * File input and output are implemented in the game status storage.
@@ -42,7 +43,7 @@ Zhen Qi UID: 3036127402
   the old game.
 
 ### 5.Program codes in multiple files
-Program codes are split into different files according to their functions and sorted under different folders.
+* Program codes are split into different files according to their functions and sorted under different folders.
 
 ### 6.Proper indentation and naming style
 * We follow the requirements of proper indentation and naming style carefully.
@@ -63,6 +64,7 @@ Ncurses also optimizes screen changes to reduce the latency experienced when usi
 ## Instructions
 Start the game with these commands: 
 ```
+make .....
 make clean
 make
 ./bin/main
