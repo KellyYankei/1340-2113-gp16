@@ -36,7 +36,7 @@ void set_status(card pyramid[])
 	return;
 }
 //This function is used to detect if any elimination can be done after the opportunities to use the deck below is used up. 
-//The input is the array used to record the pyramids.
+//The input is the array used to record the pyramids. It returns 0 if no elimination can be done, and return 1 otherwise.
 bool can_move(card pyramid[])
 {
 	bool judge1 = 0;
