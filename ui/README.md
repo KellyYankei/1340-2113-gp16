@@ -32,8 +32,8 @@ Zhen Qi UID: 3036127402
 * All the cards are coordinated in arrays so that the deck can be kept safely during the game period.
 
 ### 3.Dynamic memory management
-* When playing the game, we use STL vector to store the command lines.
-* The vector will be cleaned after each game.
+* for in-game operation, we use a STL vector(vector<string>) to store command lines that the user input.
+* The vector will be cleaned after the game finished.
 
 ### 4.File input/output
 * File input and output are implemented in the game status storage.
