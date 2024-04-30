@@ -31,7 +31,8 @@ int choose_record();
 void print_record(WINDOW * win,int confirm1,int highlight);
 void print_quit(WINDOW * win,int confirm1, int highlight);
 
-int start() //this is for the starting meun
+//This function is for the starting menu. There is no input. It will return different value to distinguish different choice of the player.
+int start() 
 {	
 	int confirm_mode;
 	while(1){
@@ -67,7 +68,8 @@ int start() //this is for the starting meun
 			}
 	}
 }
-int choose_mode(){ //this is for player to choose mode
+//The function below is for player to choose mode. There is no imput. The return is used to confirm the mode the player chosen.
+int choose_mode(){ 
 	WINDOW *win;
 	int choice = 0;
 	int c,ywin,xwin;
@@ -126,7 +128,8 @@ int choose_mode(){ //this is for player to choose mode
 		return confirm_mode;
 }
 
-int choose_record(){ //this is for player to choose to play save1 or save2, input choose and return 1/2
+//This function is for player to choose to play save1 or save2 (The situation they stored before). It input choice from the player and return 1/2 for further usage.
+int choose_record(){ 
 	initscr();
 	WINDOW * ask = newwin(HEIGHT, WIDTH, starty, startx);
 	keypad(ask, TRUE);
@@ -166,7 +169,8 @@ int choose_record(){ //this is for player to choose to play save1 or save2, inpu
 
 }
 
-int ask_if_exit(){ //this is for the player to ask if they would like to exit, return 1 means quit, return 2 means not quit
+//This function is for the player to ask if they would like to exit. It gets the input from the player, and return 1 for quitting, return 2 for not quitting.
+int ask_if_exit(){ 
 	initscr();
 	WINDOW * ask = newwin(HEIGHT, WIDTH, starty, startx);
 	keypad(ask, TRUE);
@@ -208,7 +212,7 @@ int ask_if_exit(){ //this is for the player to ask if they would like to exit, r
 }
 
 /*this function asks confirmation after player chose mode,
-the inputs is player's choice,output the confirm choice*/
+the inputs is player's choice, output the confirm choice*/
 int ask_confirm(int highlight){  
 	initscr();
 	WINDOW * ask = newwin(HEIGHT, WIDTH, starty, startx);
