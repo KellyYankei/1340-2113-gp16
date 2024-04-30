@@ -13,20 +13,21 @@ using namespace std;
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
 #define GREEN   "\033[32m"
-
+//This function is used to output expected number of spaces. The input is used to control the number of spaces. Nothing is returned. 
 void printspace(int i){
     for (int k = 0; k < 5-i; k++){
                 cout << "   ";
         }
 }
-
+//The function below is used to output the upside of a card. The input is the status of the card, which is used to judge whether the card can be eliminate.
+//Card can be eliminated is green, and other cards are white. Nothing will be returned by this function.
 void printcard_up(int status){
     if (status == 2)
         cout << GREEN << "┌────┐" << RESET;
     else
         cout << "┌────┐";
 }
-
+//The function below is used to print the middle part of a card. The input is the basic paramiter of the card. Nothing will be returned by this function.
 void printcard_mid(int status, char suit, int num){
     if (status == 2)
         cout << GREEN << "│ " << suit << num << " │" << RESET;
@@ -35,14 +36,14 @@ void printcard_mid(int status, char suit, int num){
     else
         cout << "│    │";
 }
-
+//The function below is used to print the bottom of a card. The input is the status of the card (to control the color). Nothing will be returned by this function.
 void printcard_bottom(int status){
     if (status == 2)
         cout << GREEN << "└────┘" << RESET;
     else
         cout << "└────┘";
 }
-
+//The function below is used to print the pyramid(the top pile of cards). The input is the card array. Nothing will be returned.
 void printmap(card map[]){
     for (int i = 0; i < 6; i++){
         printspace(i);
@@ -62,7 +63,8 @@ void printmap(card map[]){
         cout << endl;
     }
 }
-
+//The function below is used to generate card array at random. The imputs are three arrays which will be used to put the cards. 
+//The function will directly put the cards into these arrays. Nothing will be returned.
 void Initializing(card Cards[], card pyramid[], card deck[]){
     srand(time(NULL));
     card tmp;
@@ -113,11 +115,12 @@ int searchshow(card show[], char s, int n){
     }
     return -1;
 }
-
+//This function is used to print the deck below. The method is to get all the cards in the deck below which haven't been eliminated (deck[] defined in the function) and keep the position of the left card shown in the array(pos1).
+//the input are the pos1(mentioned above), the deck below, the remaining opportunities of Walking through the deck below and the 2 cards shown to the players.
 int print_deck(int &pos1, card deck1[], int &oppo1, card show[2])   //pos1 means the position of the left card in the array "deck" defined below (not deck1)
-{//show means the present card displayed. The status will be 1 normally, and will be 0 if there is no card showed in the corresponding position.
-    card deck[20];    //use this array to record the remaining cards in the deck below  
-    int num=0;       //use this to count the number of remaining cards in the deck below
+{                                                                   //show means the present card displayed. The status will be 1 normally, and will be 0 if there is no card showed in the corresponding position.
+    card deck[20];                                                  //use this array to record the remaining cards in the deck below  
+    int num=0;                                                      //use this to count the number of remaining cards in the deck below
 	
     for(int i=0;i<=14;i++)
     {
