@@ -74,7 +74,6 @@ int main() {
     while (true){
         cout << "Enter your command(\'f\'--flip; \'q\'--quit; \'s\'--save; \'r\'--reverse): ";
         getline(cin,line);
-        cin.ignore();
         istringstream iss(line);
         while (iss >> command){
             commands.push_back(command);
