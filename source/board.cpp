@@ -126,7 +126,7 @@ int choose_mode(){ //this is for player to choose mode
 		return confirm_mode;
 }
 
-int choose_record(){
+int choose_record(){ //this is for player to choose to play save1 or save2, input choose and return 1/2
 	initscr();
 	WINDOW * ask = newwin(HEIGHT, WIDTH, starty, startx);
 	keypad(ask, TRUE);
@@ -166,7 +166,7 @@ int choose_record(){
 
 }
 
-int ask_if_exit(){
+int ask_if_exit(){ //this is for the player to ask if they would like to exit, return 1 means quit, return 2 means not quit
 	initscr();
 	WINDOW * ask = newwin(HEIGHT, WIDTH, starty, startx);
 	keypad(ask, TRUE);
@@ -209,7 +209,7 @@ int ask_if_exit(){
 
 /*this function asks confirmation after player chose mode,
 the inputs is player's choice,output the confirm choice*/
-int ask_confirm(int highlight){ 
+int ask_confirm(int highlight){  
 	initscr();
 	WINDOW * ask = newwin(HEIGHT, WIDTH, starty, startx);
 	keypad(ask, TRUE);
@@ -270,7 +270,7 @@ void print_confirm(WINDOW * win,int confirm1,int highlight){
 	wrefresh(win);
 
 }
-void print_record(WINDOW * win,int confirm1,int highlight){
+void print_record(WINDOW * win,int confirm1,int highlight){ //this function print the choosing table of the save1 or save2 record, input the window, chosen mode with output on the window
 	int x, y, i;	
 	x = 2;
 	y = 2;
@@ -315,7 +315,7 @@ void print_menu(WINDOW *menu_win, int highlight)
 	wrefresh(menu_win);
 }
 
-void print_quit(WINDOW * win,int confirm1, int highlight){
+void print_quit(WINDOW * win,int confirm1, int highlight){ //this function input the window, confirm info and output on the window
 	int x, y, i;	
 	x = 2;
 	y = 2;
