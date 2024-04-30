@@ -18,7 +18,6 @@ int highlight = 1;
 char const *mode[] = { 
 			"New Game",
 			"Start from the old Games",
-			"Play Records",
 			"Tutorial",
 			"Exit",
 		  };
@@ -42,7 +41,7 @@ int start() //this is for the starting meun
 				choose = 0;
 		}
 		refresh();
-		if(highlight==5){
+		if(highlight==4){
 					if (ask_if_exit()==1){
 						endwin();
 						return 0;
@@ -57,15 +56,14 @@ int start() //this is for the starting meun
 			{	case 1: //new game
 					endwin();
 					return 1;
-				case 2: // start from old game
-					endwin();
-					return 2;
-				case 3: // play records
+				case 2: // start from 
 					choose_record();
-					return 3;  // I think we can just show the deck but it cannot be operated, and player can choose to go back to meun
-				case 4: //tutorial
 					endwin();
-					return 4;
+					if (record==1) return 21;
+					else return 22;
+				case 3: // tutorial
+					endwin();
+					return 3;  // I think we can just show the deck but it cannot be operated, and player can choose to go back to meun
 			}
 	}
 }
@@ -117,7 +115,7 @@ int choose_mode(){ //this is for player to choose mode
 			break;
 		}	
 		werase(win);
-		if(highlight==5){
+		if(highlight==4){
 			refresh();
 			endwin();
 			return 1;
@@ -167,10 +165,6 @@ int choose_record(){
 	return record;
 
 }
-void read_from_dir(){
-
-
-}
 
 int ask_if_exit(){
 	initscr();
@@ -179,6 +173,7 @@ int ask_if_exit(){
 	box(ask,0,0);
 	int choice = 0;
 	int input;
+	quit = 1;
 	print_quit(ask,quit,highlight);
 	while(1)
 	{	input = wgetch(ask);
@@ -207,6 +202,8 @@ int ask_if_exit(){
 		if(choice == 1)	
 			break;
 	}	
+	clear();
+	endwin();
 	return quit;
 }
 
