@@ -8,7 +8,8 @@
 
 using namespace std;
 
-//2 slots offered
+//This function is used to save the game situation into txt files. 2 slots are offered to store it. The input includes all the parameters needed. 
+//The function returns true for successful storing, and false for failure.
 bool save(int slot, card pyramid[21], card deck[15], card deck_movable[2], vector<action> steps, int pos, int oppo) {
 	//initialize save
 	string filename;
@@ -73,6 +74,9 @@ bool save(int slot, card pyramid[21], card deck[15], card deck_movable[2], vecto
 	return true;
 }
 
+//This function is used to load the game situation from the previous saving in the txt files. The input includes the commands that which slot to load,
+//and all the useful parameters (all pass by reference). The function will update the values of the variables to load the previous game situation. 
+//It will return true if the loading is successful, and return false otherwise.
 bool load(int slot, card pyramid[21], card deck[15], card deck_movable[2], vector<action>& steps, int& pos, int& oppo) {
 	//initialize load
 	string filename;
