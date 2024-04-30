@@ -6,7 +6,8 @@ Li Wenbo UID: 3036128638 <br>
 Sun Xueli UID: 3036127218<br>
 Tu Jingtian UID: 3036128121 <br>
 Wang Zixuan UID: 3036128705 <br>
-Zhen Qi UID: 3036127402
+Zhen Qi UID: 3036127402 <br>
+contribution: 20% for each groupmate
 
 ## Description
 "Pyramid" is originated from the Pyramid game in "Microsoft solitaire & casual game". The goal of the Pyramid is to eliminate the deck by choosing any two cards that add up to 9, or one card that equals 9. There are two decks, which is distributed up and down respectively. The upper deck is in the shape of pyramid, and only the card at the bottom of the pyramid can be chosen. The deck below can be filped and the filped-up card in this deck can also be chosen, which make the operation of elimination more flexible and interesting.
@@ -64,10 +65,9 @@ Ncurses also optimizes screen changes to reduce the latency experienced when usi
 ## Instructions
 Start the game with these commands: 
 ```
-make .....
 make clean
-make
-./bin/main
+make pyramid
+./pyramid
 ```
 
 ## Introduction Video
