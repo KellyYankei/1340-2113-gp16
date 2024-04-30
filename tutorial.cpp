@@ -13,14 +13,6 @@ using namespace std;
 #define CLSCR	"\033c"
 #define RESET	"\033[0m"
 
-//for calculating the size of a string array under C++11 standard
-static int size(const string arr[]) {
-	size_t i = 0;
-	while (!arr[i].empty())
-		i++;
-	return i;
-}
-
 //for waiting t seconds before further execution
 void delay(int t) {
 	clock_t start = clock();
@@ -264,7 +256,7 @@ void tutorial() {
 			}
 
 			//jump to 1
-			if (idx[1] == size(instructions0)) {
+			if (idx[1] == sizeof(instructions0) / sizeof(string)) {
 				idx[0] = 1;
 				idx[1] = 0;
 			}
@@ -273,7 +265,7 @@ void tutorial() {
 		else if (idx[0] == 1) {
 			printmap(tutPyramid);
 			printInstruction(instructions1[idx[1]]);
-			if (idx[1] == size(instructions1) - 1)
+			if (idx[1] == sizeof(instructions1) / sizeof(string) - 1)
 				printCommands(1, 0, 0);
 			else
 				printCommands(1, 1, 0);
@@ -282,9 +274,9 @@ void tutorial() {
 			getline(cin, input);
 			if (input == "P")
 				idx[1] -= 1;
-			else if (input == "N" && idx[1] != size(instructions1) - 1)
+			else if (input == "N" && idx[1] != sizeof(instructions1) / sizeof(string) - 1)
 				idx[1] += 1;
-			else if (idx[1] == size(instructions1) - 1) {
+			else if (idx[1] == sizeof(instructions1) / sizeof(string) - 1) {
 				if (input == "C8 D1" || input == "D1 C8") {
 					idx[0] = 3; //jump to 2b
 					tutPyramid[17].status = 0;
@@ -302,7 +294,7 @@ void tutorial() {
 			//jump to 0
 			if (idx[1] == -1) {
 				idx[0] = 0;
-				idx[1] = size(instructions0) - 1;
+				idx[1] = sizeof(instructions0) / sizeof(string) - 1;
 			}
 		}
 
@@ -311,7 +303,7 @@ void tutorial() {
 			printInstruction(instructions2a[idx[1]]);
 			if (idx[1] == 0)
 				printCommands(0, 1, 0);
-			else if (idx[1] == size(instructions2a) - 1)
+			else if (idx[1] == sizeof(instructions2a) / sizeof(string) - 1)
 				printCommands(1, 0, 0);
 			else
 				printCommands(1, 1, 0);
@@ -320,9 +312,9 @@ void tutorial() {
 			getline(cin, input);
 			if (input == "P" && idx[1] != 0)
 				idx[1] -= 1;
-			else if (input == "N" && idx[1] != size(instructions2a) - 1)
+			else if (input == "N" && idx[1] != sizeof(instructions2a) / sizeof(string) - 1)
 				idx[1] += 1;
-			else if (idx[1] == size(instructions2a) - 1) {
+			else if (idx[1] == sizeof(instructions2a) / sizeof(string) - 1) {
 				if (input == "C8 D1" || input == "D1 C8") {
 					idx[0] = 3;//jump to 2b
 					tutPyramid[17].status = 0;
@@ -341,7 +333,7 @@ void tutorial() {
 			printInstruction(instructions2b[idx[1]]);
 			if (idx[1] == 0)
 				printCommands(0, 1, 0);
-			else if (idx[1] == size(instructions2b) - 1)
+			else if (idx[1] == sizeof(instructions2b) / sizeof(string) - 1)
 				printCommands(1, 0, 0);
 			else
 				printCommands(1, 1, 0);
@@ -350,9 +342,9 @@ void tutorial() {
 			getline(cin, input);
 			if (input == "P" && idx[1] != 0)
 				idx[1] -= 1;
-			else if (input == "N" && idx[1] != size(instructions2b) - 1)
+			else if (input == "N" && idx[1] != sizeof(instructions2b) / sizeof(string) - 1)
 				idx[1] += 1;
-			else if (idx[1] == size(instructions2b) - 1) {
+			else if (idx[1] == sizeof(instructions2b) / sizeof(string) - 1) {
 				if (input == "S9") {
 					idx[0] = 5;//jump to 3b
 					tutPyramid[12].status = 0;
@@ -372,7 +364,7 @@ void tutorial() {
 			printInstruction(instructions3a[idx[1]]);
 			if (idx[1] == 0)
 				printCommands(0, 1, 0);
-			else if (idx[1] == size(instructions3a) - 1)
+			else if (idx[1] == sizeof(instructions3a) / sizeof(string) - 1)
 				printCommands(1, 0, 0);
 			else
 				printCommands(1, 1, 0);
@@ -381,9 +373,9 @@ void tutorial() {
 			getline(cin, input);
 			if (input == "P" && idx[1] != 0)
 				idx[1] -= 1;
-			else if (input == "N" && idx[1] != size(instructions3a) - 1)
+			else if (input == "N" && idx[1] != sizeof(instructions3a) / sizeof(string) - 1)
 				idx[1] += 1;
-			else if (idx[1] == size(instructions3a) - 1) {
+			else if (idx[1] == sizeof(instructions3a) / sizeof(string) - 1) {
 				if (input == "S9") {
 					idx[0] = 5;//jump to 3b
 					tutPyramid[12].status = 0;
@@ -416,7 +408,7 @@ void tutorial() {
 			}
 
 			//jump to 4
-			if (idx[1] == size(instructions3b)) {
+			if (idx[1] == sizeof(instructions3b) / sizeof(string)) {
 				idx[0] = 6;
 				idx[1] = 0;
 			}
@@ -426,7 +418,7 @@ void tutorial() {
 			printmap(tutPyramid);
 			print_deck(pos, tutDeck, oppo, deck_movable);
 			printInstruction(instructions4[idx[1]]);
-			if (idx[1] == size(instructions4) - 1)
+			if (idx[1] == sizeof(instructions4) / sizeof(string) - 1)
 				printCommands(1, 0, 0);
 			else
 				printCommands(1, 1, 0);
@@ -435,9 +427,9 @@ void tutorial() {
 			getline(cin, input);
 			if (input == "P")
 				idx[1] -= 1;
-			else if (input == "N" && idx[1] != size(instructions4) - 1)
+			else if (input == "N" && idx[1] != sizeof(instructions4) / sizeof(string) - 1)
 				idx[1] += 1;
-			else if (idx[1] == size(instructions4) - 1) {
+			else if (idx[1] == sizeof(instructions4) / sizeof(string) - 1) {
 				if (input == "D3 S6" || input == "S6 D3") {
 					idx[0] = 8;//jump to 5b
 					tutPyramid[15].status = 0;
@@ -455,7 +447,7 @@ void tutorial() {
 
 			if (idx[1] == -1) {
 				idx[0] = 5;//jump to 3b
-				idx[1] = size(instructions3b) - 1;
+				idx[1] = sizeof(instructions3b) / sizeof(string) - 1;
 			}
 		}
 
@@ -465,7 +457,7 @@ void tutorial() {
 			printInstruction(instructions5a[idx[1]]);
 			if (idx[1] == 0)
 				printCommands(0, 1, 0);
-			else if (idx[1] == size(instructions5a) - 1)
+			else if (idx[1] == sizeof(instructions5a) / sizeof(string) - 1)
 				printCommands(1, 0, 0);
 			else
 				printCommands(1, 1, 0);
@@ -474,9 +466,9 @@ void tutorial() {
 			getline(cin, input);
 			if (input == "P" && idx[1] != 0)
 				idx[1] -= 1;
-			else if (input == "N" && idx[1] != size(instructions5a) -1)
+			else if (input == "N" && idx[1] != sizeof(instructions5a) / sizeof(string) -1)
 				idx[1] += 1;
-			else if (idx[1] == size(instructions5a) - 1) {
+			else if (idx[1] == sizeof(instructions5a) / sizeof(string) - 1) {
 				if (input == "D3 S6" || input == "S6 D3") {
 					idx[0] = 8;//jump to 5b
 					tutPyramid[15].status = 0;
@@ -497,7 +489,7 @@ void tutorial() {
 			printInstruction(instructions5b[idx[1]]);
 			if (idx[1] == 0)
 				printCommands(0, 1, 0);
-			else if (idx[1] == size(instructions5b) - 1)
+			else if (idx[1] == sizeof(instructions5b) / sizeof(string) - 1)
 				printCommands(1, 0, 1);
 			else
 				printCommands(1, 1, 0);
@@ -506,9 +498,9 @@ void tutorial() {
 			getline(cin, input);
 			if (input == "P" && idx[1] != 0)
 				idx[1] -= 1;
-			else if (input == "N" && idx[1] != size(instructions5b) - 1)
+			else if (input == "N" && idx[1] != sizeof(instructions5b) / sizeof(string) - 1)
 				idx[1] += 1;
-			else if (idx[1] == size(instructions5b) - 1) {
+			else if (idx[1] == sizeof(instructions5b) / sizeof(string) - 1) {
 				if (input == "F") {
 					idx[0] = 10;//jump to 6b
 					pos += 1;
@@ -531,7 +523,7 @@ void tutorial() {
 			printInstruction(instructions6a[idx[1]]);
 			if (idx[1] == 0)
 				printCommands(0, 1, 0);
-			else if (idx[1] == size(instructions6a) - 1)
+			else if (idx[1] == sizeof(instructions6a) / sizeof(string) - 1)
 				printCommands(1, 0, 1);
 			else
 				printCommands(1, 1, 0);
@@ -540,9 +532,9 @@ void tutorial() {
 			getline(cin, input);
 			if (input == "P" && idx[1] != 0)
 				idx[1] -= 1;
-			else if (input == "N" && idx[1] != size(instructions6a) - 1)
+			else if (input == "N" && idx[1] != sizeof(instructions6a) / sizeof(string) - 1)
 				idx[1] += 1;
-			else if (idx[1] == size(instructions6a) - 1) {
+			else if (idx[1] == sizeof(instructions6a) / sizeof(string) - 1) {
 				if (input == "F") {
 					idx[0] = 10;//jump to 6b
 					pos += 1;
@@ -563,7 +555,7 @@ void tutorial() {
 			printInstruction(instructions6b[idx[1]]);
 			if (idx[1] == 0)
 				printCommands(0, 1, 0);
-			else if (idx[1] == size(instructions6b) - 1)
+			else if (idx[1] == sizeof(instructions6b) / sizeof(string) - 1)
 				printCommands(1, 0, 1);
 			else
 				printCommands(1, 1, 0);
@@ -572,9 +564,9 @@ void tutorial() {
 			getline(cin, input);
 			if (input == "P" && idx[1] != 0)
 				idx[1] -= 1;
-			else if (input == "N" && idx[1] != size(instructions6b) - 1)
+			else if (input == "N" && idx[1] != sizeof(instructions6b) / sizeof(string) - 1)
 				idx[1] += 1;
-			else if (idx[1] == size(instructions6b) - 1) {
+			else if (idx[1] == sizeof(instructions6b) / sizeof(string) - 1) {
 				if (input == "F") {
 					pos += 1;
 					deck_movable[1] = deck_movable[0];
@@ -601,7 +593,7 @@ void tutorial() {
 			printInstruction(instructions7a[idx[1]]);
 			if (idx[1] == 0)
 				printCommands(0, 1, 0);
-			else if (idx[1] == size(instructions7a) - 1)
+			else if (idx[1] == sizeof(instructions7a) / sizeof(string) - 1)
 				printCommands(1, 0, 1);
 			else
 				printCommands(1, 1, 0);
@@ -610,9 +602,9 @@ void tutorial() {
 			getline(cin, input);
 			if (input == "P" && idx[1] != 0)
 				idx[1] -= 1;
-			else if (input == "N" && idx[1] != size(instructions7a) - 1)
+			else if (input == "N" && idx[1] != sizeof(instructions7a) / sizeof(string) - 1)
 				idx[1] += 1;
-			else if (idx[1] == size(instructions7a) - 1) {
+			else if (idx[1] == sizeof(instructions7a) / sizeof(string) - 1) {
 				if (input == "F") {
 					pos += 1;
 					deck_movable[1] = deck_movable[0];
@@ -639,7 +631,7 @@ void tutorial() {
 			printInstruction(instructions7b[idx[1]]);
 			if (idx[1] == 0)
 				printCommands(0, 1, 0);
-			else if (idx[1] == size(instructions7b) - 1)
+			else if (idx[1] == sizeof(instructions7b) / sizeof(string) - 1)
 				printCommands(1, 0, 0);
 			else
 				printCommands(1, 1, 0);
@@ -648,9 +640,9 @@ void tutorial() {
 			getline(cin, input);
 			if (input == "P" && idx[1] != 0)
 				idx[1] -= 1;
-			else if (input == "N" && idx[1] != size(instructions7b) - 1)
+			else if (input == "N" && idx[1] != sizeof(instructions7b) / sizeof(string) - 1)
 				idx[1] += 1;
-			else if (idx[1] == size(instructions7b) - 1) {
+			else if (idx[1] == sizeof(instructions7b) / sizeof(string) - 1) {
 				if (input == "C2 S7" || input == "S7 C2") {
 					idx[0] = 14;//jump to 8b
 					tutPyramid[19].status = 0;
@@ -673,7 +665,7 @@ void tutorial() {
 			printInstruction(instructions8a[idx[1]]);
 			if (idx[1] == 0)
 				printCommands(0, 1, 0);
-			else if (idx[1] == size(instructions8a) - 1)
+			else if (idx[1] == sizeof(instructions8a) / sizeof(string) - 1)
 				printCommands(1, 0, 0);
 			else
 				printCommands(1, 1, 0);
@@ -682,9 +674,9 @@ void tutorial() {
 			getline(cin, input);
 			if (input == "P" && idx[1] != 0)
 				idx[1] -= 1;
-			else if (input == "N" && idx[1] != size(instructions7b) - 1)
+			else if (input == "N" && idx[1] != sizeof(instructions7b) / sizeof(string) - 1)
 				idx[1] += 1;
-			else if (idx[1] == size(instructions7b) - 1) {
+			else if (idx[1] == sizeof(instructions7b) / sizeof(string) - 1) {
 				if (input == "C2 S7" || input == "S7 C2") {
 					idx[0] = 14;//jump to 8b
 					tutPyramid[19].status = 0;
@@ -720,7 +712,7 @@ void tutorial() {
 			}
 
 			//jump to 9
-			if (idx[1] == size(instructions8b)) {
+			if (idx[1] == sizeof(instructions8b) / sizeof(string)) {
 				idx[0] = 15;
 				idx[1] = 0;
 				for (i = 3; i < 21; i++)
@@ -734,7 +726,7 @@ void tutorial() {
 			printmap(tutPyramid);
 			print_deck(pos, tutDeck, oppo, deck_movable);
 			printInstruction(instructions9[idx[1]]);
-			if (idx[1] == size(instructions9) - 1)
+			if (idx[1] == sizeof(instructions9) / sizeof(string) - 1)
 				printCommands(1, 0, 0);
 			else
 				printCommands(1, 1, 0);
@@ -743,9 +735,9 @@ void tutorial() {
 			getline(cin, input);
 			if (input == "P")
 				idx[1] -= 1;
-			else if (input == "N" && idx[1] != size(instructions9) - 1)
+			else if (input == "N" && idx[1] != sizeof(instructions9) / sizeof(string) - 1)
 				idx[1] += 1;
-			else if (idx[1] == size(instructions9) - 1) {
+			else if (idx[1] == sizeof(instructions9) / sizeof(string) - 1) {
 				if (input == "S5 D4" || input == "D4 S5") {
 					idx[0] = 17;//jump to 10b
 					tutPyramid[1].status = 0;
@@ -763,7 +755,7 @@ void tutorial() {
 			//jump to 8b
 			if (idx[1] == -1) {
 				idx[0] = 14;
-				idx[1] = size(instructions8b) - 1;
+				idx[1] = sizeof(instructions8b) / sizeof(string) - 1;
 				for (i = 3; i < 21; i++)
 					tutPyramid[i].status = 1;
 				tutPyramid[12].status = 0;
@@ -785,7 +777,7 @@ void tutorial() {
 			printInstruction(instructions10a[idx[1]]);
 			if (idx[1] == 0)
 				printCommands(0, 1, 0);
-			else if (idx[1] == size(instructions10a) - 1)
+			else if (idx[1] == sizeof(instructions10a) / sizeof(string) - 1)
 				printCommands(1, 0, 0);
 			else
 				printCommands(1, 1, 0);
@@ -794,9 +786,9 @@ void tutorial() {
 			getline(cin, input);
 			if (input == "P" && idx[1] != 0)
 				idx[1] -= 1;
-			else if (input == "N" && idx[1] != size(instructions10a) - 1)
+			else if (input == "N" && idx[1] != sizeof(instructions10a) / sizeof(string) - 1)
 				idx[1] += 1;
-			else if (idx[1] == size(instructions10a) - 1) {
+			else if (idx[1] == sizeof(instructions10a) / sizeof(string) - 1) {
 				if (input == "S5 D4" || input == "D4 S5") {
 					idx[0] = 17;
 					tutPyramid[1].status = 0;
@@ -816,7 +808,7 @@ void tutorial() {
 			printInstruction(instructions10b[idx[1]]);
 			if (idx[1] == 0)
 				printCommands(0, 1, 0);
-			else if (idx[1] == size(instructions10b) - 1)
+			else if (idx[1] == sizeof(instructions10b) / sizeof(string) - 1)
 				printCommands(1, 0, 0);
 			else
 				printCommands(1, 1, 0);
@@ -825,9 +817,9 @@ void tutorial() {
 			getline(cin, input);
 			if (input == "P" && idx[1] != 0)
 				idx[1] -= 1;
-			else if (input == "N" && idx[1] != size(instructions10b) - 1)
+			else if (input == "N" && idx[1] != sizeof(instructions10b) / sizeof(string) - 1)
 				idx[1] += 1;
-			else if (idx[1] == size(instructions10b) - 1) {
+			else if (idx[1] == sizeof(instructions10b) / sizeof(string) - 1) {
 				if (input == "C9") {
 					idx[0] = 19;//jump to 11b
 					tutPyramid[0].status = 0;
@@ -848,7 +840,7 @@ void tutorial() {
 			printInstruction(instructions11a[idx[1]]);
 			if (idx[1] == 0)
 				printCommands(0, 1, 0);
-			else if (idx[1] == size(instructions11a) - 1)
+			else if (idx[1] == sizeof(instructions11a) / sizeof(string) - 1)
 				printCommands(1, 0, 0);
 			else
 				printCommands(1, 1, 0);
@@ -857,9 +849,9 @@ void tutorial() {
 			getline(cin, input);
 			if (input == "P" && idx[1] != 0)
 				idx[1] -= 1;
-			else if (input == "N" && idx[1] != size(instructions11a) - 1)
+			else if (input == "N" && idx[1] != sizeof(instructions11a) / sizeof(string) - 1)
 				idx[1] += 1;
-			else if (idx[1] == size(instructions11a) - 1) {
+			else if (idx[1] == sizeof(instructions11a) / sizeof(string) - 1) {
 				if (input == "C9") {
 					idx[0] = 19;//jump to 11b
 					tutPyramid[0].status = 0;
@@ -890,7 +882,7 @@ void tutorial() {
 				delay(1);
 			}
 
-			if (idx[1] == size(instructions11b))
+			if (idx[1] == sizeof(instructions11b) / sizeof(string))
 				return;//end of tutorial
 		}
 	}
