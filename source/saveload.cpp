@@ -50,7 +50,6 @@ void save(int slot, card pyramid[21], card deck[15], card deck_movable[2], vecto
 
 	if (fout.fail()) {
 		cout << "Error occurred. Could not save." << endl;
-		fout.close();
 		return;
 	}
 	cout << "open file" << endl;
@@ -93,7 +92,6 @@ void load(int slot, card pyramid[21], card deck[15], card deck_movable[2], vecto
 
 	if (fin.fail()) {
 		cout << "Error occurred. Could not load." << endl;
-		fin.close();
 		return;
 	}
 
