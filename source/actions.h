@@ -60,6 +60,6 @@ struct action{
 };
 bool checkFormat(string input);
 action makeMatch(string card1, string card2, card pyramid[21], card deck[15], int& pos, card deck_movable[2], int &oppo1);
-void reset(card pyramid[21], card deck[15], int& pos);
+void reset(card pyramid[21], card deck[15], int& pos, int &oppo);
 
 #endif
