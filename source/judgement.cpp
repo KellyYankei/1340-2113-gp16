@@ -36,7 +36,7 @@ void set_status(card pyramid[])
 	return;
 }
 //This function is used to detect if any elimination can be done after the opportunities to use the deck below is used up. The input is the arrays records all the cards.
-bool can_move(card pyramid[], card deck[])
+bool can_move(card pyramid[])
 {
 	bool judge1 = 0;
 	for (int i = 0; i < 21; i++)
@@ -47,28 +47,5 @@ bool can_move(card pyramid[], card deck[])
 			if (pyramid[i].status == 2 && pyramid[j].status == 2 && pyramid[i].num + pyramid[j].num == 9) return 1;
 		}
 	}
-
-	//the lines below is unfinished. I tried to also judge the cards in the deck.	
-	/*	card deck2[20];
-		num2=0;
-		for(int i=0;i<15;i++) if(deck[i].status!=0)
-		{
-			deck2[num2]=deck[i];
-			num2++;
-		}
-		deck2[num2].suit=C;
-		deck2[num2].num=100;
-		deck2[num2].status=1;
-
-		for(int i=0;i<num2;i++)
-		{
-			if(deck2[i].num+deck2[i+1].num==9) return 1;
-			if(deck2[i].num==9) return 1;
-			for(int j=0;j<21;j++)
-			{
-				if(pyramid[j].status==2 && pyramid[j].num)
-			}
-		}
-		*/
 	return 0;
 }
