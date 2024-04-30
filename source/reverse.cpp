@@ -6,6 +6,8 @@
 #include "reverse.h"
 using namespace std;
 
+//This finction is used to reverse a step. The input is the arrays for the cards and previous operations. 
+//The function changes the status of the cards to the previous situation. Nothing will be returned.
 bool deleteLastStep(vector<action> record, card pyramid[21], card deck[15]){
     if (record.size() == 0){
         cout << "No previous step." << endl;
