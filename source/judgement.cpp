@@ -35,8 +35,8 @@ void set_status(card pyramid[])
 	
 	return;
 }
-//
-bool can_move(card pyramid[], card deck[])//this is a function to judge if any operations can be conducted after the opportunities of flipping the deck below is used up.
+//This function is used to detect if any elimination can be done after the opportunities to use the deck below is used up. The input is the arrays records all the cards.
+bool can_move(card pyramid[], card deck[])
 {
 	bool judge1 = 0;
 	for (int i = 0; i < 21; i++)
