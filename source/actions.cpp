@@ -5,7 +5,8 @@
 
 using namespace std;
 
-//Check and return if the entered card is valid
+//This function is used to check and return if the user's imput is a valid card. The input is the input by the player. 
+//This function only check the grammar. If the suit is invalid, it will be handled in the next function.  
 bool checkFormat(string input) {
 	if (input.length() == 2 && 'A' <= input[0] <= 'Z' && '0' <= input[1] <= '9')
 		return true;
@@ -14,8 +15,12 @@ bool checkFormat(string input) {
 
 struct action;
 
-//Match and remove one or two cards, returns whether removal is successful. Input is assumed to be valid, please check validity before implementing function.
-//(If only one card with num 9 is entered, plug in card2 as empty string)
+//This function is used to match and remove one or two cards, returns whether the removal is successful. 
+//The input of this function includes the 2 cards the player are trying to eliminate (If only one card with num 9 is entered, plug in card2 as empty string), 
+//the arrays of cards, the array for the 2 cards displayed below, and the positions of the card displayed below and opportunities remains. 
+//The last 3 is used because while the card below is eliminated, these values may need to be changed.
+//Input is assumed to be valid, please check validity before implementing function.
+//This function will return a struct for recording the operations of the player.
 action makeMatch(string card1, string card2, card pyramid[21], card deck[15], int& pos, card deck_movable[2], int& oppo1) {
 	char suit1, suit2;
 	int num1, num2, i, j;
@@ -85,7 +90,7 @@ action makeMatch(string card1, string card2, card pyramid[21], card deck[15], in
 							int type = 4;
 							return action(1,0,1,'l',type,i,j);
 						}
-
+							
 						else if (deck[j] == deck_movable[1]) {
 							pyramid[i].status = 0;
 							deck[j].status = 0;
@@ -136,11 +141,12 @@ action makeMatch(string card1, string card2, card pyramid[21], card deck[15], in
 		}
 	}
 
-	return action(0);
+	return action(0);    //If all judgment statements are false, then the program will eventually decide that the operation is not reasonable
 }
 
-//set the board to initial state (for restarting same game)
-void reset(card pyramid[21], card deck[15], int& pos) {
+//This function is used to set the board to initial state (for restarting same game). The input are the arrays for the cards and the position of the card
+//displayed below. This function set these to the initial status. This function do not return anything.
+void reset(card pyramid[21], card deck[15], int& pos, int &oppo) {
 	int i;
 
 	for (i = 0; i < 21; i++) 
@@ -150,4 +156,5 @@ void reset(card pyramid[21], card deck[15], int& pos) {
 		deck[i].status = 1;
 
 	pos = 0;
+	oppo = 2;
 }
