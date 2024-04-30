@@ -1,13 +1,13 @@
 CXX = g++
 CXXFLAGS = -I lib/ncurses/include -I lib/ncurses/include/ncursesw -L lib/ncurses/lib -pedantic-errors -std=c++11
 
-TARGET = testing_ver_2
+TARGET = pyramid
 
-$(TARGET): testing_ver_2.o actions.o structures.o saveload.o reverse.o printing.o judgement.o board.o tutorial.o
-	$(CXX) $(CXXFLAGS) -o $(TARGET) testing_ver_2.o actions.o structures.o saveload.o reverse.o printing.o judgement.o board.o tutorial.o -lncurses
+$(TARGET): pyramid.o actions.o structures.o saveload.o reverse.o printing.o judgement.o board.o tutorial.o
+	$(CXX) $(CXXFLAGS) -o $(TARGET) pyramid.o actions.o structures.o saveload.o reverse.o printing.o judgement.o board.o tutorial.o -lncurses
 
-testing_ver_2.o: source/testing_ver_2.cpp source/actions.h source/structures.h source/saveload.h source/printing.h source/judgement.h source/tutorial.h
-	$(CXX) $(CXXFLAGS) -c source/testing_ver_2.cpp -lncurses
+pyramid.o: source/pyramid.cpp source/actions.h source/structures.h source/saveload.h source/printing.h source/judgement.h source/tutorial.h
+	$(CXX) $(CXXFLAGS) -c source/pyramid.cpp -lncurses
 
 board.o: source/board.cpp source/board.h 
 	$(CXX) $(CXXFLAGS) -c source/board.cpp -lncurses
