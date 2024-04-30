@@ -36,7 +36,7 @@ void printInstruction(string instruction) {
 
 //print in blue instruction for useful commands (P, N, Q), can control whether to print P or N
 void printCommands(bool p1, bool p2, bool p3) {
-	string commands[4] = { "\"P\"revious instruction", "\"N\"ext instruction", "\"F\"lip card", "\"Q\"uit tutorial"};
+	string commands[4] = { "\"P\"revious instruction", "\"N\"ext instruction", "\"F\"lip card", "\"Q\"uit"};
 	cout << BLUE << "Useful commands (enter quoted letter)" << endl;
 
 	if (p1)
