@@ -34,6 +34,6 @@ tutorial.o: source/tutorial.cpp source/judgement.h source/printing.h source/stru
 	$(CXX) $(CXXFLAGS) -c source/tutorial.cpp
 
 clean:
-	rm -f $(TARGET) testing_ver_2.o actions.o structures.o save*.txt
+	rm -f $(TARGET) *.o save*.txt
 
 .PHONY: clean
