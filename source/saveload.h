@@ -7,7 +7,7 @@ using namespace std;
 #ifndef SAVELOAD_H
 #define SAVELOAD_H
 
-void save(int slot, card pyramid[21], card deck[15], vector<action> steps);
-void load(int slot, card pyramid[21], card deck[15], vector<action>& steps);
+void save(int slot, card pyramid[21], card deck[15], card deck_movable[2], vector<action> steps, int pos, int oppo);
+void load(int slot, card pyramid[21], card deck[15], card deck_movable[2], vector<action>& steps, int& pos, int& oppo);
 
 #endif

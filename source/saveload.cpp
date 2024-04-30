@@ -9,7 +9,7 @@
 using namespace std;
 
 //2 slots offered
-void save(int slot, card pyramid[21], card deck[15], vector<action> steps) {
+void save(int slot, card pyramid[21], card deck[15], card deck_movable[2], vector<action> steps, int pos, int oppo) {
 	//initialize save
 	string filename;
 	if (slot == 1)
@@ -60,8 +60,13 @@ void save(int slot, card pyramid[21], card deck[15], vector<action> steps) {
 	for (i = 0; i < 15; i++)
 		fout << deck[i].suit << ' ' << deck[i].num << ' ' << deck[i].status << endl;
 
+	fout << deck_movable[0].suit << ' ' << deck_movable[0].num << ' ' << deck_movable[0].status << endl;
+	fout << deck_movable[1].suit << ' ' << deck_movable[1].num << ' ' << deck_movable[1].status << endl;
+
 //	for (i = 0; i < steps.size(); i++)
 //		fout << steps[i] << endl;
+
+	fout << pos << endl << oppo << endl;
 
 	fout.close();
 	cout << "Save successful." << endl;
@@ -69,7 +74,7 @@ void save(int slot, card pyramid[21], card deck[15], vector<action> steps) {
 	return;
 }
 
-void load(int slot, card pyramid[21], card deck[15], vector<action>& steps) {
+void load(int slot, card pyramid[21], card deck[15], card deck_movable[2], vector<action>& steps, int& pos, int& oppo) {
 	//initialize load
 	string filename;
 	if (slot == 1)
@@ -98,8 +103,13 @@ void load(int slot, card pyramid[21], card deck[15], vector<action>& steps) {
 	for (i = 0; i < 15; i++)
 		fin >> deck[i].suit >> deck[i].num >> deck[i].status;
 
+	fin >> deck_movable[0].suit >> deck_movable[0].num >> deck_movable[0].status;
+	fin >> deck_movable[1].suit >> deck_movable[1].num >> deck_movable[1].status;
+
 //	while (fin >> sTmp)
 //		steps.push_back(sTmp);
+
+	fin >> pos >> oppo;
 
 	fin.close();
 	cout << "Load successful." << endl;
