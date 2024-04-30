@@ -183,19 +183,3 @@ void loadGameProgress(int currentStateIndex, string& fileName) { //parameter may
         }
     }
 }
-
-int main(){
-    int currentStateIndex = 0;
-    GameState* head;
-    GameState* current;
-    string fileName;
-    time_t rawtime;
-    time(&rawtime);
-    fileName = ctime(&rawtime); //generate a timestamp as record fileName
-    //However if player choose 读档, fileName should be what they choose
-    int pyramid1[2] ={3,5};
-    vector<GameState> record;
-    record.push_back(GameState(2,pyramid1));
-    record.push_back(1);
-    saveGameProgress(fileName,record);
-}
